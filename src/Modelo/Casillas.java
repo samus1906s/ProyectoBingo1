@@ -6,7 +6,7 @@ package Modelo;
 
 /**
  *
- * @author Student
+ * @author Reynold
  */
 public class Casillas {
     private int valores;

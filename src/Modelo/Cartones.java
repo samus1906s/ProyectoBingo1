@@ -6,7 +6,7 @@ package Modelo;
 
 /**
  *
- * @author Student
+ * @author Reynold
  */
 public class Cartones {
     private final String id;
@@ -31,18 +31,18 @@ public class Cartones {
     public void marcarNumero(int numero) {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
-                Espacios c = espacios[i][j];
-                if (!c.isLibre() && c.getValor() == numero) {
-                    c.marcar();
+                Espacios e = espacios[i][j];
+                if (!e.isLibre() && e.getValor() == numero) {
+                    e.marcar();
                 }
             }
         }
     }
 
     public void limpiarMarcados() {
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                espacios[i][j].desmarcar();
+        for (int i=0; i <5; i++) {
+            for (int a=0; a<5; a++) {
+                espacios[i][a].desmarcar();
             }
         }
     }
