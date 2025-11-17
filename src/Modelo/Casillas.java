@@ -36,7 +36,9 @@ public class Casillas {
     }
 
     public void desmarcar() {
-        if (!disponible) {
+       if (disponible) {
+            this.marcados = true;
+        } else {
             this.marcados = false;
         }
     }
