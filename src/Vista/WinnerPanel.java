@@ -4,6 +4,14 @@
  */
 package Vista;
 
+import Modelo.Carton;
+import Modelo.WrapLayout;
+import Vista.PanelGanadorGUI;
+import java.awt.Dimension;
+import java.awt.Frame;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+//import Controlador.JuegoController;
+
 /**
  *
  * @author Student
@@ -16,6 +24,34 @@ public class WinnerPanel extends javax.swing.JDialog {
     public WinnerPanel(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+    
+   /* public WinnerPanel(Frame parent, Carton ganador, JuegoController controller){
+        setTitle("Ganador del Bingo");
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+        PanelGanadorGUI ui = new PanelGanadorGUI();
+        ui.setTitulo("Cartón ganador: " + ganador.getId());
+
+        PanelCartonUI panelCarton = new PanelCartonUI();
+        panelCarton.setModoManual(false);
+        panelCarton.mostrarCarton(ganador);
+
+        var linea=controller.obtenerLineaGanadora(ganador);
+        if (linea != null) {
+            panelCarton.setCasillasResaltadas(linea);
+        }
+
+        ui.insertarCarton(panelCarton);
+
+        ui.getBotonOK().addActionListener(e -> dispose());
+
+        setContentPane(ui);
+
+        pack();
+        setMinimumSize(new Dimension(500, 500));
+        setResizable(false);
+        setLocationRelativeTo(parent);    
     }
 
     /**
@@ -33,11 +69,11 @@ public class WinnerPanel extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 420, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 444, Short.MAX_VALUE)
         );
 
         pack();
