@@ -9,5 +9,5 @@ package Modelo;
  * @author samue
  */
 public interface ReglaVictoria {
-    boolean esGanador(Cartones carton);
+    boolean esGanador(Carton carton);
 }

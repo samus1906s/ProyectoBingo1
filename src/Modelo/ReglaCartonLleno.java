@@ -11,7 +11,7 @@ package Modelo;
 public class ReglaCartonLleno implements ReglaVictoria{
 
     @Override
-    public boolean esGanador(Cartones carton) {
+    public boolean esGanador(Carton carton) {
         Casillas[][] c = carton.getEspacios();
         for (int i = 0; i < 5; i++){
             for (int j = 0; j < 5; j++){
