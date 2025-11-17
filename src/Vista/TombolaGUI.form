@@ -39,13 +39,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel5" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
+                      <Component id="lblO" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jLabel1" alignment="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jLabel3" alignment="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jLabel4" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
+                          <Component id="lblI" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="lblN" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="lblG" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLabel2" alignment="1" min="-2" pref="63" max="-2" attributes="0"/>
+                      <Component id="lblB" alignment="1" min="-2" pref="63" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jPanel2" min="-2" pref="996" max="-2" attributes="0"/>
@@ -61,15 +61,15 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="59" max="-2" attributes="0"/>
+                  <Component id="lblB" min="-2" pref="59" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="63" max="-2" attributes="0"/>
+                  <Component id="lblI" min="-2" pref="63" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="jLabel3" min="-2" pref="54" max="-2" attributes="0"/>
+                  <Component id="lblN" min="-2" pref="54" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                  <Component id="jLabel4" min="-2" pref="55" max="-2" attributes="0"/>
+                  <Component id="lblG" min="-2" pref="55" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel5" min="-2" pref="59" max="-2" attributes="0"/>
+                  <Component id="lblO" min="-2" pref="59" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -1590,7 +1590,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="lblB">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1598,7 +1598,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lblI">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1606,7 +1606,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="lblN">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1614,7 +1614,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="lblG">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1622,7 +1622,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="lblO">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
