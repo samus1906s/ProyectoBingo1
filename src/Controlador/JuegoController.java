@@ -4,18 +4,19 @@
  */
 package Controlador;
 
+import Modelo.Carton;
 import java.awt.Point;
 import java.util.List;
 
-//import model.core.Juego;
-//import model.entities.Carton;
-//import model.enums.ModoJuego;
+import Modelo.Juego;
+import Modelo.Carton;
+import Modelo.ModoJuego;
 
 /**
  *
  * @author Valdelomaar
  */
-/*public class JuegoController {
+public class JuegoController {
     
     private final Juego juego;
 
