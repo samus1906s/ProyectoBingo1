@@ -4,37 +4,26 @@
  */
 package Modelo;
 
-/*import java.awt.Point;
+import Utilidades.Constantes;
+import Utilidades.Validaciones;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import model.entities.Carton;
-import model.entities.Casilla;
-import model.entities.TableroNumeros;
-import model.entities.Tombola;
-import model.enums.ModoJuego;
-import model.generator.GeneradorAutomatico;
-import model.generator.GeneradorNumeros;
-import model.rules.ReglaCartonLleno;
-import model.rules.ReglaCuatroEsquinas;
-import model.rules.ReglaNormal;
-import model.rules.ReglaVictoria;
-import util.Constantes;
-import util.Validaciones;
 
 /**
  *
  * @author Valdelomaar
  */
-/*public class Juego {
+public class Juego {
     
     private final List<Carton> cartones;
-    private final TableroNumeros tablero;
+    private final Tablero tablero;
     private final Tombola tombola;
-    private final GeneradorNumeros generador;
+    private final GeneradorNumeroAutomatico generador;
     private ModoJuego modoJuego;
     private ReglaVictoria reglaVictoria;
     private int ultimoNumero;
@@ -42,8 +31,8 @@ import util.Validaciones;
 
     public Juego() {
         this.cartones = new ArrayList<>();
-        this.tablero = new TableroNumeros();
-        this.generador = new GeneradorAutomatico();
+        this.tablero = new Tablero();
+        this.generador = new GeneradorNumeroAutomatico();
         this.tombola = new Tombola(generador);
         setModoJuego(ModoJuego.NORMAL);
     }
@@ -76,7 +65,7 @@ import util.Validaciones;
         return null;
     }
 
-    Casilla[][] casillas = new Casilla[5][5];
+    Casillas[][] casillas = new Casillas[5][5];
     Random rnd = new Random();
 
     for (int col = 0; col < 5; col++) {
@@ -86,7 +75,7 @@ import util.Validaciones;
             boolean libre = (fila == 2 && col == 2);
 
             if (libre) {
-                casillas[fila][col] = new Casilla(0, true);
+                casillas[fila][col] = new Casillas(0, true);
                 continue;
             }
 
@@ -102,11 +91,11 @@ import util.Validaciones;
             int numero;
             do {
                 numero = rnd.nextInt(max - min + 1) + min;
-            } while (!Validaciones.esNumeroValidoParaColumna(numero, col) ||
+            } while (!Validaciones.numeroColumna(numero, col) ||
                      usados.contains(numero));
 
             usados.add(numero);
-            casillas[fila][col] = new Casilla(numero, false);
+            casillas[fila][col] = new Casillas(numero, false);
         }
     }
 
@@ -125,12 +114,12 @@ import util.Validaciones;
         if (buscarCartonPorId(id) != null) {
             return null;
         }
-        Casilla[][] casillas = new Casilla[Constantes.FILAS_CARTON][Constantes.COLUMNAS_CARTON];
-        for (int fila = 0; fila < Constantes.FILAS_CARTON; fila++) {
-            for (int col = 0; col < Constantes.COLUMNAS_CARTON; col++) {
+        Casillas[][] casillas = new Casillas[Constantes.filasCarton][Constantes.columnasCarton];
+        for (int fila = 0; fila < Constantes.filasCarton; fila++) {
+            for (int col = 0; col < Constantes.columnasCarton; col++) {
                 boolean libre = (fila == 2 && col == 2);
                 int valor = libre ? 0 : numeros[fila][col];
-                casillas[fila][col] = new Casilla(valor, libre);
+                casillas[fila][col] = new Casillas(valor, libre);
             }
         }
         Carton carton = new Carton(id, casillas);
@@ -220,14 +209,14 @@ import util.Validaciones;
 
     public List<Point> obtenerLineaGanadora(Carton carton) {
         List<Point> pts = new ArrayList<>();
-        Casilla[][] c = carton.getCasillas();
+        Casillas[][] c = carton.getEspacios();
 
         if (modoJuego == ModoJuego.CUATRO_ESQUINAS) {
             boolean esquinas =
-                    c[0][0].isMarcado() &&
-                    c[0][4].isMarcado() &&
-                    c[4][0].isMarcado() &&
-                    c[4][4].isMarcado();
+                    c[0][0].isMarcados() &&
+                    c[0][4].isMarcados() &&
+                    c[4][0].isMarcados() &&
+                    c[4][4].isMarcados();
             if (esquinas) {
                 pts.add(new Point(0, 0));
                 pts.add(new Point(0, 4));
@@ -241,7 +230,7 @@ import util.Validaciones;
             boolean lleno = true;
             for (int fila = 0; fila < 5; fila++) {
                 for (int col = 0; col < 5; col++) {
-                    if (!c[fila][col].isMarcado()) {
+                    if (!c[fila][col].isMarcados()) {
                         lleno = false;
                         break;
                     }
@@ -263,7 +252,7 @@ import util.Validaciones;
         for (int fila = 0; fila < 5; fila++) {
             boolean ok = true;
             for (int col = 0; col < 5; col++) {
-                if (!c[fila][col].isMarcado()) {
+                if (!c[fila][col].isMarcados()) {
                     ok = false;
                     break;
                 }
@@ -279,7 +268,7 @@ import util.Validaciones;
         for (int col = 0; col < 5; col++) {
             boolean ok = true;
             for (int fila = 0; fila < 5; fila++) {
-                if (!c[fila][col].isMarcado()) {
+                if (!c[fila][col].isMarcados()) {
                     ok = false;
                     break;
                 }
@@ -294,7 +283,7 @@ import util.Validaciones;
 
         boolean okDiag1 = true;
         for (int i = 0; i < 5; i++) {
-            if (!c[i][i].isMarcado()) {
+            if (!c[i][i].isMarcados()) {
                 okDiag1 = false;
                 break;
             }
@@ -308,7 +297,7 @@ import util.Validaciones;
 
         boolean okDiag2 = true;
         for (int i = 0; i < 5; i++) {
-            if (!c[i][4 - i].isMarcado()) {
+            if (!c[i][4 - i].isMarcados()) {
                 okDiag2 = false;
                 break;
             }
