@@ -4,19 +4,252 @@
  */
 package Vista;
 
+import java.awt.Color;
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.Timer;
+import Modelo.Carton;
+//import model.entities.Casilla;
+//import src.controller.JuegoController;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.AlphaComposite;
+//import srcview.GameWindowForm;
 /**
  *
  * @author je110
  */
 public class CartonGUI extends javax.swing.JPanel {
+    private JLabel[][] labels;
+    private Carton cartonActual;
+    private List<Point> casillasResaltadas = new ArrayList<>();
+    private boolean blinkState = true;
+    private boolean modoManual = false;
+    private float fadeAlpha = 0f;
+    private Timer fadeTimer;
 
+    // Glow dorado alrededor del cartón (borde pulsante)
+    private float glowLevel = 0f;
+    private boolean glowUp = true;
+    private Timer glowTimer;
+
+    // Highlight rápido al hacer click manual en una casilla
+    private float clickHighlightAlpha = 0f;
+    private Timer clickTimer;
     /**
      * Creates new form Cartón
      */
-    public CartonGUI() {
+    /*public CartonGUI() {
         initComponents();
+        labels = new JLabel[][]{
+            {Label1, Label2, Label3, Label4, Label5},
+            {Label6, Label7, Label8, Label9, Label10},
+            {Label11, Label12, Label13, Label14, Label15},
+            {Label16, Label17, Label18, Label19, Label20},
+            {Label21, Label22, Label23, Label24, Label25}
+        };
+
+        for (int f = 0; f < 5; f++) {
+            for (int c = 0; c < 5; c++) {
+                final int ff = f;
+                final int cc = c;
+
+                labels[f][c].setOpaque(true);
+                labels[f][c].addMouseListener(new java.awt.event.MouseAdapter() {
+    @Override
+    public void mouseClicked(java.awt.event.MouseEvent e) {
+        if (!modoManual) return;
+        if (cartonActual == null) return;
+
+        Casilla cs = cartonActual.getCasillas()[ff][cc];
+        if (cs.isLibre()) return;
+
+        if (cs.isMarcado()) cs.desmarcar();
+        else cs.marcar();
+
+        mostrarCarton(cartonActual);
+          animacionClickSuave();
+
+        // Buscar GameWindowForm para actualizar el estado de ganadores
+        java.awt.Container parent = PanelCartonUI.this.getParent();
+        while (parent != null && !(parent instanceof GameWindowForm)) {
+            parent = parent.getParent();
+        }
+
+        if (parent instanceof GameWindowForm gw) {
+            gw.actualizarEstadoGanadores();
+        }
+    }
+});
+                
+            }
+        }
+    }
+ 
+    public Carton getCartonActual() {
+        return cartonActual;
+    }
+    
+    public void setModoManual(boolean modo) {
+        this.modoManual = modo;
     }
 
+     @Override
+    protected void paintComponent(java.awt.Graphics g) {
+        super.paintComponent(g);
+
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+
+        // FADE VERDE
+        if (fadeAlpha > 0f) {
+            g2.setComposite(java.awt.AlphaComposite.getInstance(
+                    java.awt.AlphaComposite.SRC_OVER, fadeAlpha));
+            g2.setColor(new java.awt.Color(0, 255, 0, 60));
+            g2.fillRoundRect(0, 0, getWidth(), getHeight(), 25, 25);
+        }
+
+        // GLOW DORADO
+        if (glowLevel > 0f) {
+            int alphaGlow = (int) (40 + glowLevel * 80);
+            if (alphaGlow > 255) alphaGlow = 255;
+
+            g2.setColor(new java.awt.Color(255, 215, 0, alphaGlow));
+            int grosor = 6;
+            for (int i = 0; i < 3; i++) {
+                g2.drawRoundRect(
+                        grosor / 2 + i,
+                        grosor / 2 + i,
+                        getWidth() - grosor - 2 * i,
+                        getHeight() - grosor - 2 * i,
+                        30,
+                        30
+                );
+            }
+        }
+
+        g2.dispose();
+    }
+    
+    private void animacionClickSuave() {
+        if (clickTimer != null && clickTimer.isRunning()) {
+            clickTimer.stop();
+        }
+
+        clickHighlightAlpha = 0.7f; // empieza fuerte y se desvanece
+        clickTimer = new Timer(30, e -> {
+            clickHighlightAlpha -= 0.08f;
+            if (clickHighlightAlpha <= 0f) {
+                clickHighlightAlpha = 0f;
+                ((Timer) e.getSource()).stop();
+            }
+            repaint();
+        });
+        clickTimer.start();
+    }
+
+    public void iniciarFadeGanador() {
+        if (fadeTimer != null && fadeTimer.isRunning()) {
+            fadeTimer.stop();
+        }
+
+        fadeAlpha = 0f;
+        fadeTimer = new javax.swing.Timer(30, e -> {
+            fadeAlpha += 0.05f;
+            if (fadeAlpha >= 1f) {
+                fadeAlpha = 1f;
+                ((javax.swing.Timer) e.getSource()).stop();
+            }
+            repaint();
+        });
+        fadeTimer.start();
+    }
+
+    public void iniciarGlowGanador() {
+        if (glowTimer != null && glowTimer.isRunning()) {
+            glowTimer.stop();
+        }
+
+        glowLevel = 0f;
+        glowUp = true;
+
+        glowTimer = new javax.swing.Timer(40, e -> {
+            if (glowUp) {
+                glowLevel += 0.05f;
+                if (glowLevel >= 1f) {
+                    glowLevel = 1f;
+                    glowUp = false;
+                }
+            } else {
+                glowLevel -= 0.05f;
+                if (glowLevel <= 0f) {
+                    glowLevel = 0f;
+                    glowUp = true;
+                }
+            }
+            repaint();
+        });
+        glowTimer.start();
+    }
+
+    public void detenerGlowGanador() {
+        if (glowTimer != null && glowTimer.isRunning()) {
+            glowTimer.stop();
+        }
+        glowLevel = 0f;
+        repaint();
+    }
+    
+    public void mostrarCarton(Carton carton) {
+    this.cartonActual = carton;
+
+    LabelID.setText("ID: " + carton.getId());
+    Casilla[][] cs = carton.getCasillas();
+
+    for (int f = 0; f < 5; f++) {
+        for (int c = 0; c < 5; c++) {
+            JLabel lbl = labels[f][c];
+            Casilla cas = cs[f][c];
+
+            if (cas.isLibre()) {
+                lbl.setText("FREE");
+                lbl.setBackground(new Color(0, 120, 255));
+            } else {
+                lbl.setText(String.valueOf(cas.getValor()));
+                if (cas.isMarcado()) {
+                    lbl.setBackground(new Color(0, 170, 0));
+                } else {
+                    lbl.setBackground(new Color(45, 45, 45));
+                }
+            }
+
+            if (casillasResaltadas.contains(new Point(f, c)) && blinkState) {
+                lbl.setBackground(Color.YELLOW);
+            }
+        }
+    }
+
+    revalidate();
+    repaint();
+}
+
+    public void setCasillasResaltadas(List<Point> pts) {
+    this.casillasResaltadas = (pts != null) ? pts : new ArrayList<>();
+    iniciarAnimacion();
+}
+
+private void iniciarAnimacion() {
+    Timer t = new Timer(350, e -> {
+        blinkState = !blinkState;
+        if (cartonActual != null) {
+            mostrarCarton(cartonActual);
+        }
+    });
+    t.start();
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

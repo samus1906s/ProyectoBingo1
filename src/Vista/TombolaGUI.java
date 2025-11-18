@@ -4,19 +4,83 @@
  */
 package Vista;
 
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.Timer;
+import java.awt.Font;
 /**
  *
  * @author je110
  */
 public class TombolaGUI extends javax.swing.JPanel {
+    
+    private JLabel[] labelsNumeros;
 
-    /**
-     * Creates new form Tombola
-     */
     public TombolaGUI() {
         initComponents();
+        inicializarArreglo();
+        reiniciar();
     }
 
+    private void inicializarArreglo() {
+        labelsNumeros = new JLabel[]{lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8, lbl9, lbl10, lbl11, lbl12, lbl13, lbl14, lbl15, lbl16, lbl17, lbl18, lbl19, lbl20, lbl21, lbl22, lbl23, lbl24, lbl25, lbl26, lbl27, lbl28, lbl29, lbl30, lbl31, lbl32, lbl33, lbl34, lbl35, lbl36, lbl37, lbl38, lbl39, lbl40, lbl41, lbl42, lbl43, lbl44, lbl45, lbl46, lbl47, lbl48, lbl49, lbl50, lbl51, lbl52, lbl53, lbl54, lbl55, lbl56, lbl57, lbl58, lbl59, lbl60, lbl61, lbl62, lbl63, lbl64, lbl65, lbl66, lbl67, lbl68, lbl69, lbl70, lbl71, lbl72, lbl73, lbl74, lbl75 };
+
+        for (JLabel l : labelsNumeros) {
+            l.setOpaque(true);
+        }
+    }
+
+   
+    public void agregarNumero(int numero) {
+       
+        if (numero < 1 || numero > 75) return;
+
+        JLabel lbl = labelsNumeros[numero - 1];
+        lbl.setBackground(new Color(0, 170, 0));
+        lbl.setForeground(Color.WHITE);
+
+        animacionNumeroPop(lbl);
+    }
+   
+    public void reiniciar() {
+        for (JLabel lbl : labelsNumeros) {
+            lbl.setBackground(new Color(45, 45, 45));
+            lbl.setForeground(Color.WHITE);
+        }
+    }
+    
+
+    private void animacionNumeroPop(JLabel lbl) {
+        final int pasos = 8;
+        final float tamañoBase = lbl.getFont().getSize2D();
+        final float incremento = 3f; 
+
+        final int[] step = {0};
+
+        Timer t = new Timer(35, e -> {
+            step[0]++;
+
+            float factor;
+            
+            if (step[0] <= pasos / 2) {
+                factor = 1f + (step[0] * (incremento / tamañoBase) / (pasos / 2));
+            } else {
+                int pasoDesc = step[0] - pasos / 2;
+                factor = 1f + ((incremento / tamañoBase) * ( (pasos / 2 - pasoDesc) / (float)(pasos / 2) ));
+            }
+
+            Font f = lbl.getFont();
+            lbl.setFont(f.deriveFont(tamañoBase * factor));
+
+            if (step[0] >= pasos) {
+                ((Timer) e.getSource()).stop();
+                
+                lbl.setFont(f.deriveFont(tamañoBase));
+            }
+        });
+
+        t.start();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
