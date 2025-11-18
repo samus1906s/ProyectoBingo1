@@ -11,32 +11,32 @@ import java.util.List;
  *
  * @author je110
  */
-//public class GeneradorNumeroAutomatico implements GeneradorNumeros {
+public class GeneradorNumeroAutomatico implements GenerarNums {
     
-    //private final List<Integer> disponibles;
+    private final List<Integer> disponibles;
 
-    //public GeneradorAutomatico() {
-        //this.disponibles = new ArrayList<>();
-        //for (int i = 1; i <= 75; i++) {
-            //disponibles.add(i);
-        //}
-        //Collections.shuffle(disponibles);
-    //}
+    public GeneradorNumeroAutomatico() {
+        this.disponibles = new ArrayList<>();
+        for (int i = 1; i <= 75; i++) {
+            disponibles.add(i);
+        }
+        Collections.shuffle(disponibles);
+    }
 
-    //@Override
-    //public int generar() {
-        //if (disponibles.isEmpty()) {
-            //return -1;
-        //}
-        //return disponibles.remove(0);
-    //}
+    @Override
+    public int generar() {
+        if (disponibles.isEmpty()) {
+            return -1;
+        }
+        return disponibles.remove(0);
+    }
 
-    //@Override
-    //public void reiniciar() {
-        //disponibles.clear();
-        //for (int i = 1; i <= 75; i++) {
-            //disponibles.add(i);
-        //}
-        //Collections.shuffle(disponibles);
-    //}
-//}
+    @Override
+    public void reinicio() {
+        disponibles.clear();
+        for (int i = 1; i <= 75; i++) {
+            disponibles.add(i);
+        }
+        Collections.shuffle(disponibles);
+    }
+}
