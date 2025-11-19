@@ -4,13 +4,8 @@
  */
 package Vista;
 
+import Modelo.Animaciones;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import static java.awt.Color.BLACK;
-import java.awt.Dimension;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
 
 /**
