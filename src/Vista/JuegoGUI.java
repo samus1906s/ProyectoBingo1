@@ -43,13 +43,13 @@ public class JuegoGUI extends javax.swing.JFrame {
     setLocationRelativeTo(null);
     
     panelMenu.setLayout(new BorderLayout());
-    PanelFondo fondoMenu = new PanelFondo("C:\\Users\\Valdelomaar\\Documents\\ProyectoFinalBoss_Limpio\\ProyectoFinalBoss\\src\\images\\mesa_morada.png");
+    PanelFondo fondoMenu = new PanelFondo("C:\\Users\\Valdelomaar\\Documents\\NetBeansProjects\\ProyectoBingo1\\src\\images\\mesa_morada.png");
      fondoMenu.setLayout(new BorderLayout());  
     panelMenu.add(fondoMenu, BorderLayout.CENTER);
 
    
 
-    PanelFondo fondo = new PanelFondo("C:\\Users\\Valdelomaar\\Documents\\ProyectoFinalBoss_Limpio\\ProyectoFinalBoss\\src\\images\\mesa_morada.png");
+    PanelFondo fondo = new PanelFondo("C:\\Users\\Valdelomaar\\Documents\\NetBeansProjects\\ProyectoBingo1\\src\\images\\mesa_morada.png");
     fondo.setLayout(new BorderLayout());
 
 
