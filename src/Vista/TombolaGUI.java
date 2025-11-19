@@ -10,50 +10,70 @@ import javax.swing.Timer;
 import java.awt.Font;
 /**
  *
- * @author je110
+ * @author samue
  */
 public class TombolaGUI extends javax.swing.JPanel {
-    
     private JLabel[] labelsNumeros;
+    
 
-    public TombolaGUI() {
-        initComponents();
-        inicializarArreglo();
-        reiniciar();
+    /**
+     * Creates new form PanelTombolaUI
+     */
+    
+ public TombolaGUI() {
+    initComponents();
+    inicializarArreglo();
+    reiniciar();
+}
+ 
+   private void inicializarArreglo() {
+    labelsNumeros = new JLabel[]{
+        Label1, Label2, Label3, Label4, Label5,
+        Label6, Label7, Label8, Label9, Label10,
+        Label11, Label12, Label13, Label14, Label15,
+        Label16, Label17, Label18, Label19, Label20,
+        Label21, Label22, Label23, Label24, Label25,
+        Label26, Label27, Label28, Label29, Label30,
+        Label31, Label32, Label33, Label34, Label35,
+        Label36, Label37, Label38, Label39, Label40,
+        Label41, Label42, Label43, Label44, Label45,
+        Label46, Label47, Label48, Label49, Label50,
+        Label51, Label52, Label53, Label54, Label55,
+        Label56, Label57, Label58, Label59, Label60,
+        Label61, Label62, Label63, Label64, Label65,
+        Label66, Label67, Label68, Label69, Label70,
+        Label71, Label72, Label73, Label74, Label75
+    };
+
+    for (JLabel l : labelsNumeros) {
+        l.setOpaque(true);
     }
-
-    private void inicializarArreglo() {
-        labelsNumeros = new JLabel[]{lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8, lbl9, lbl10, lbl11, lbl12, lbl13, lbl14, lbl15, lbl16, lbl17, lbl18, lbl19, lbl20, lbl21, lbl22, lbl23, lbl24, lbl25, lbl26, lbl27, lbl28, lbl29, lbl30, lbl31, lbl32, lbl33, lbl34, lbl35, lbl36, lbl37, lbl38, lbl39, lbl40, lbl41, lbl42, lbl43, lbl44, lbl45, lbl46, lbl47, lbl48, lbl49, lbl50, lbl51, lbl52, lbl53, lbl54, lbl55, lbl56, lbl57, lbl58, lbl59, lbl60, lbl61, lbl62, lbl63, lbl64, lbl65, lbl66, lbl67, lbl68, lbl69, lbl70, lbl71, lbl72, lbl73, lbl74, lbl75 };
-
-        for (JLabel l : labelsNumeros) {
-            l.setOpaque(true);
-        }
-    }
+}
 
    
-    public void agregarNumero(int numero) {
-       
-        if (numero < 1 || numero > 75) return;
+   public void agregarNumero(int numero) {
+    if (numero < 1 || numero > 75) return;
 
-        JLabel lbl = labelsNumeros[numero - 1];
-        lbl.setBackground(new Color(0, 170, 0));
+    JLabel lbl = labelsNumeros[numero - 1];
+    lbl.setBackground(new Color(0, 170, 0));
+    lbl.setForeground(Color.WHITE);
+
+    // Animación visual "pop"
+    animacionNumeroPop(lbl);
+}
+   
+public void reiniciar() {
+    for (JLabel lbl : labelsNumeros) {
+        lbl.setBackground(new Color(45, 45, 45));
         lbl.setForeground(Color.WHITE);
-
-        animacionNumeroPop(lbl);
     }
-   
-    public void reiniciar() {
-        for (JLabel lbl : labelsNumeros) {
-            lbl.setBackground(new Color(45, 45, 45));
-            lbl.setForeground(Color.WHITE);
-        }
-    }
+}
     
 
     private void animacionNumeroPop(JLabel lbl) {
         final int pasos = 8;
         final float tamañoBase = lbl.getFont().getSize2D();
-        final float incremento = 3f; 
+        final float incremento = 3f; // cuánto crece
 
         final int[] step = {0};
 
@@ -61,7 +81,7 @@ public class TombolaGUI extends javax.swing.JPanel {
             step[0]++;
 
             float factor;
-            
+            // primera mitad: crece, segunda: regresa al tamaño base
             if (step[0] <= pasos / 2) {
                 factor = 1f + (step[0] * (incremento / tamañoBase) / (pasos / 2));
             } else {
@@ -74,13 +94,14 @@ public class TombolaGUI extends javax.swing.JPanel {
 
             if (step[0] >= pasos) {
                 ((Timer) e.getSource()).stop();
-                
+                // aseguramos que vuelva al tamaño original exacto
                 lbl.setFont(f.deriveFont(tamañoBase));
             }
         });
 
         t.start();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,839 +112,844 @@ public class TombolaGUI extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        Label1 = new javax.swing.JLabel();
+        Label2 = new javax.swing.JLabel();
+        Label3 = new javax.swing.JLabel();
+        Label4 = new javax.swing.JLabel();
+        Label5 = new javax.swing.JLabel();
+        Label6 = new javax.swing.JLabel();
+        Label7 = new javax.swing.JLabel();
+        Label8 = new javax.swing.JLabel();
+        Label9 = new javax.swing.JLabel();
+        Label10 = new javax.swing.JLabel();
+        Label11 = new javax.swing.JLabel();
+        Label12 = new javax.swing.JLabel();
+        Label13 = new javax.swing.JLabel();
+        Label14 = new javax.swing.JLabel();
+        Label15 = new javax.swing.JLabel();
+        Label16 = new javax.swing.JLabel();
+        Label17 = new javax.swing.JLabel();
+        Label18 = new javax.swing.JLabel();
+        Label19 = new javax.swing.JLabel();
+        Label20 = new javax.swing.JLabel();
+        Label21 = new javax.swing.JLabel();
+        Label22 = new javax.swing.JLabel();
+        Label23 = new javax.swing.JLabel();
+        Label24 = new javax.swing.JLabel();
+        Label25 = new javax.swing.JLabel();
+        Label26 = new javax.swing.JLabel();
+        Label27 = new javax.swing.JLabel();
+        Label28 = new javax.swing.JLabel();
+        Label29 = new javax.swing.JLabel();
+        Label30 = new javax.swing.JLabel();
+        Label31 = new javax.swing.JLabel();
+        Label32 = new javax.swing.JLabel();
+        Label33 = new javax.swing.JLabel();
+        Label34 = new javax.swing.JLabel();
+        Label35 = new javax.swing.JLabel();
+        Label36 = new javax.swing.JLabel();
+        Label37 = new javax.swing.JLabel();
+        Label38 = new javax.swing.JLabel();
+        Label39 = new javax.swing.JLabel();
+        Label40 = new javax.swing.JLabel();
+        Label41 = new javax.swing.JLabel();
+        Label42 = new javax.swing.JLabel();
+        Label43 = new javax.swing.JLabel();
+        Label44 = new javax.swing.JLabel();
+        Label45 = new javax.swing.JLabel();
+        Label46 = new javax.swing.JLabel();
+        Label47 = new javax.swing.JLabel();
+        Label48 = new javax.swing.JLabel();
+        Label49 = new javax.swing.JLabel();
+        Label50 = new javax.swing.JLabel();
+        Label51 = new javax.swing.JLabel();
+        Label52 = new javax.swing.JLabel();
+        Label53 = new javax.swing.JLabel();
+        Label54 = new javax.swing.JLabel();
+        Label55 = new javax.swing.JLabel();
+        Label56 = new javax.swing.JLabel();
+        Label57 = new javax.swing.JLabel();
+        Label58 = new javax.swing.JLabel();
+        Label59 = new javax.swing.JLabel();
+        Label60 = new javax.swing.JLabel();
+        Label61 = new javax.swing.JLabel();
+        Label62 = new javax.swing.JLabel();
+        Label63 = new javax.swing.JLabel();
+        Label64 = new javax.swing.JLabel();
+        Label65 = new javax.swing.JLabel();
+        Label66 = new javax.swing.JLabel();
+        Label67 = new javax.swing.JLabel();
+        Label68 = new javax.swing.JLabel();
+        Label69 = new javax.swing.JLabel();
+        Label70 = new javax.swing.JLabel();
+        Label71 = new javax.swing.JLabel();
+        Label72 = new javax.swing.JLabel();
+        Label73 = new javax.swing.JLabel();
+        Label74 = new javax.swing.JLabel();
+        Label75 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        lbl1 = new javax.swing.JLabel();
-        lbl2 = new javax.swing.JLabel();
-        lbl3 = new javax.swing.JLabel();
-        lbl4 = new javax.swing.JLabel();
-        lbl5 = new javax.swing.JLabel();
-        lbl6 = new javax.swing.JLabel();
-        lbl7 = new javax.swing.JLabel();
-        lbl8 = new javax.swing.JLabel();
-        lbl9 = new javax.swing.JLabel();
-        lbl10 = new javax.swing.JLabel();
-        lbl11 = new javax.swing.JLabel();
-        lbl12 = new javax.swing.JLabel();
-        lbl13 = new javax.swing.JLabel();
-        lbl14 = new javax.swing.JLabel();
-        lbl15 = new javax.swing.JLabel();
-        lbl16 = new javax.swing.JLabel();
-        lbl17 = new javax.swing.JLabel();
-        lbl18 = new javax.swing.JLabel();
-        lbl19 = new javax.swing.JLabel();
-        lbl20 = new javax.swing.JLabel();
-        lbl21 = new javax.swing.JLabel();
-        lbl22 = new javax.swing.JLabel();
-        lbl23 = new javax.swing.JLabel();
-        lbl24 = new javax.swing.JLabel();
-        lbl25 = new javax.swing.JLabel();
-        lbl26 = new javax.swing.JLabel();
-        lbl27 = new javax.swing.JLabel();
-        lbl28 = new javax.swing.JLabel();
-        lbl29 = new javax.swing.JLabel();
-        lbl30 = new javax.swing.JLabel();
-        lbl31 = new javax.swing.JLabel();
-        lbl32 = new javax.swing.JLabel();
-        lbl33 = new javax.swing.JLabel();
-        lbl34 = new javax.swing.JLabel();
-        lbl35 = new javax.swing.JLabel();
-        lbl36 = new javax.swing.JLabel();
-        lbl37 = new javax.swing.JLabel();
-        lbl38 = new javax.swing.JLabel();
-        lbl39 = new javax.swing.JLabel();
-        lbl40 = new javax.swing.JLabel();
-        lbl41 = new javax.swing.JLabel();
-        lbl42 = new javax.swing.JLabel();
-        lbl43 = new javax.swing.JLabel();
-        lbl44 = new javax.swing.JLabel();
-        lbl45 = new javax.swing.JLabel();
-        lbl46 = new javax.swing.JLabel();
-        lbl47 = new javax.swing.JLabel();
-        lbl48 = new javax.swing.JLabel();
-        lbl49 = new javax.swing.JLabel();
-        lbl50 = new javax.swing.JLabel();
-        lbl51 = new javax.swing.JLabel();
-        lbl52 = new javax.swing.JLabel();
-        lbl53 = new javax.swing.JLabel();
-        lbl54 = new javax.swing.JLabel();
-        lbl55 = new javax.swing.JLabel();
-        lbl56 = new javax.swing.JLabel();
-        lbl57 = new javax.swing.JLabel();
-        lbl58 = new javax.swing.JLabel();
-        lbl59 = new javax.swing.JLabel();
-        lbl60 = new javax.swing.JLabel();
-        lbl61 = new javax.swing.JLabel();
-        lbl62 = new javax.swing.JLabel();
-        lbl63 = new javax.swing.JLabel();
-        lbl64 = new javax.swing.JLabel();
-        lbl65 = new javax.swing.JLabel();
-        lbl66 = new javax.swing.JLabel();
-        lbl67 = new javax.swing.JLabel();
-        lbl68 = new javax.swing.JLabel();
-        lbl69 = new javax.swing.JLabel();
-        lbl70 = new javax.swing.JLabel();
-        lbl71 = new javax.swing.JLabel();
-        lbl72 = new javax.swing.JLabel();
-        lbl73 = new javax.swing.JLabel();
-        lbl74 = new javax.swing.JLabel();
-        lbl75 = new javax.swing.JLabel();
-        lblB = new javax.swing.JLabel();
-        lblI = new javax.swing.JLabel();
-        lblN = new javax.swing.JLabel();
-        lblG = new javax.swing.JLabel();
-        lblO = new javax.swing.JLabel();
-
-        jPanel1.setBackground(new java.awt.Color(10, 14, 39));
-
-        jPanel2.setBackground(new java.awt.Color(10, 14, 39));
-        jPanel2.setLayout(new java.awt.GridLayout(5, 14));
-
-        lbl1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl1.setText("1");
-        lbl1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl1);
-
-        lbl2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl2.setText("2");
-        lbl2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl2);
-
-        lbl3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl3.setText("3");
-        lbl3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl3);
-
-        lbl4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl4.setText("4");
-        lbl4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl4);
-
-        lbl5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl5.setText("5");
-        lbl5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl5);
-
-        lbl6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl6.setText("6");
-        lbl6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl6);
-
-        lbl7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl7.setText("7");
-        lbl7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl7);
-
-        lbl8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl8.setText("8");
-        lbl8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl8);
-
-        lbl9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl9.setText("9");
-        lbl9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl9);
-
-        lbl10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl10.setText("10");
-        lbl10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl10);
-
-        lbl11.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl11.setText("11");
-        lbl11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl11);
-
-        lbl12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl12.setText("12");
-        lbl12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl12);
-
-        lbl13.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl13.setText("13");
-        lbl13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl13);
-
-        lbl14.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl14.setText("14");
-        lbl14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl14);
-
-        lbl15.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl15.setText("15");
-        lbl15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl15);
-
-        lbl16.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl16.setText("16");
-        lbl16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl16);
-
-        lbl17.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl17.setText("17");
-        lbl17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl17);
-
-        lbl18.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl18.setText("18");
-        lbl18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl18);
-
-        lbl19.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl19.setText("19");
-        lbl19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl19);
-
-        lbl20.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl20.setText("20");
-        lbl20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl20);
-
-        lbl21.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl21.setText("21");
-        lbl21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl21.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl21);
-
-        lbl22.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl22.setText("22");
-        lbl22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl22.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl22);
-
-        lbl23.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl23.setText("23");
-        lbl23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl23.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl23);
-
-        lbl24.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl24.setText("24");
-        lbl24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl24.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl24);
-
-        lbl25.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl25.setText("25");
-        lbl25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl25.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl25);
-
-        lbl26.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl26.setText("26");
-        lbl26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl26.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl26);
-
-        lbl27.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl27.setText("27");
-        lbl27.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl27.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl27);
-
-        lbl28.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl28.setText("28");
-        lbl28.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl28.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl28);
-
-        lbl29.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl29.setText("29");
-        lbl29.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl29.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl29);
-
-        lbl30.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl30.setText("30");
-        lbl30.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl30.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl30);
-
-        lbl31.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl31.setText("31");
-        lbl31.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl31.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl31);
-
-        lbl32.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl32.setText("32");
-        lbl32.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl32.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl32);
-
-        lbl33.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl33.setText("33");
-        lbl33.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl33.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl33);
-
-        lbl34.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl34.setText("34");
-        lbl34.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl34.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl34);
-
-        lbl35.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl35.setText("35");
-        lbl35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl35.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl35);
-
-        lbl36.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl36.setText("36");
-        lbl36.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl36.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl36);
-
-        lbl37.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl37.setText("37");
-        lbl37.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl37.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl37);
-
-        lbl38.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl38.setText("38");
-        lbl38.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl38.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl38);
-
-        lbl39.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl39.setText("39");
-        lbl39.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl39.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl39);
-
-        lbl40.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl40.setText("40");
-        lbl40.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl40.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl40);
-
-        lbl41.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl41.setText("41");
-        lbl41.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl41.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl41);
-
-        lbl42.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl42.setText("42");
-        lbl42.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl42.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl42);
-
-        lbl43.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl43.setText("43");
-        lbl43.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl43.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl43);
-
-        lbl44.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl44.setText("44");
-        lbl44.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl44.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl44);
-
-        lbl45.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl45.setText("45");
-        lbl45.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl45.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl45);
-
-        lbl46.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl46.setText("46");
-        lbl46.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl46.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl46);
-
-        lbl47.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl47.setText("47");
-        lbl47.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl47.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl47);
-
-        lbl48.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl48.setText("48");
-        lbl48.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl48.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl48);
-
-        lbl49.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl49.setText("49");
-        lbl49.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl49.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl49);
-
-        lbl50.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl50.setText("50");
-        lbl50.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl50.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl50);
-
-        lbl51.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl51.setText("51");
-        lbl51.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl51.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl51);
-
-        lbl52.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl52.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl52.setText("52");
-        lbl52.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl52.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl52);
-
-        lbl53.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl53.setText("53");
-        lbl53.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl53.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl53);
-
-        lbl54.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl54.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl54.setText("54");
-        lbl54.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl54.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl54);
-
-        lbl55.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl55.setText("55");
-        lbl55.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl55.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl55);
-
-        lbl56.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl56.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl56.setText("56");
-        lbl56.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl56.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl56);
-
-        lbl57.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl57.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl57.setText("57");
-        lbl57.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl57.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl57);
-
-        lbl58.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl58.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl58.setText("58");
-        lbl58.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl58.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl58);
-
-        lbl59.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl59.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl59.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl59.setText("59");
-        lbl59.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl59.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl59);
-
-        lbl60.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl60.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl60.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl60.setText("60");
-        lbl60.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl60.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl60);
-
-        lbl61.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl61.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl61.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl61.setText("61");
-        lbl61.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl61.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl61);
-
-        lbl62.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl62.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl62.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl62.setText("62");
-        lbl62.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl62.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl62);
-
-        lbl63.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl63.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl63.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl63.setText("63");
-        lbl63.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl63.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl63);
-
-        lbl64.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl64.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl64.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl64.setText("64");
-        lbl64.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl64.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl64);
-
-        lbl65.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl65.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl65.setText("65");
-        lbl65.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl65.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl65);
-
-        lbl66.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl66.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl66.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl66.setText("66");
-        lbl66.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl66.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl66);
-
-        lbl67.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl67.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl67.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl67.setText("67");
-        lbl67.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl67.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl67);
-
-        lbl68.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl68.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl68.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl68.setText("68");
-        lbl68.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl68.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl68);
-
-        lbl69.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl69.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl69.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl69.setText("69");
-        lbl69.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl69.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl69);
-
-        lbl70.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl70.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl70.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl70.setText("70");
-        lbl70.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl70.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl70);
-
-        lbl71.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl71.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl71.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl71.setText("71");
-        lbl71.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl71.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl71);
-
-        lbl72.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl72.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl72.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl72.setText("72");
-        lbl72.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl72.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl72);
-
-        lbl73.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl73.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl73.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl73.setText("73");
-        lbl73.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl73.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl73);
-
-        lbl74.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl74.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl74.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl74.setText("74");
-        lbl74.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl74.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl74);
-
-        lbl75.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbl75.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl75.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl75.setText("75");
-        lbl75.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl75.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(lbl75);
-
-        lblB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/B.png"))); // NOI18N
-
-        lblI.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/I.png"))); // NOI18N
-
-        lblN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/N.png"))); // NOI18N
-
-        lblG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/G.png"))); // NOI18N
-
-        lblO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/O.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblO, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(lblI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(lblN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(lblG, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 996, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(lblB, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(lblI, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(lblN, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(lblG, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblO, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-        );
+        LabelB = new javax.swing.JLabel();
+        LabelI = new javax.swing.JLabel();
+        LabelN = new javax.swing.JLabel();
+        LabelG = new javax.swing.JLabel();
+        LabelO = new javax.swing.JLabel();
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel1.setLayout(new java.awt.GridLayout(5, 14));
+
+        Label1.setBackground(new java.awt.Color(51, 51, 51));
+        Label1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label1.setText("1");
+        Label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label1.setOpaque(true);
+        jPanel1.add(Label1);
+
+        Label2.setBackground(new java.awt.Color(51, 51, 51));
+        Label2.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label2.setText("2");
+        Label2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label2.setOpaque(true);
+        jPanel1.add(Label2);
+
+        Label3.setBackground(new java.awt.Color(51, 51, 51));
+        Label3.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label3.setText("3");
+        Label3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label3.setOpaque(true);
+        jPanel1.add(Label3);
+
+        Label4.setBackground(new java.awt.Color(51, 51, 51));
+        Label4.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label4.setText("4");
+        Label4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label4.setOpaque(true);
+        jPanel1.add(Label4);
+
+        Label5.setBackground(new java.awt.Color(51, 51, 51));
+        Label5.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label5.setText("5");
+        Label5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label5.setOpaque(true);
+        jPanel1.add(Label5);
+
+        Label6.setBackground(new java.awt.Color(51, 51, 51));
+        Label6.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label6.setText("6");
+        Label6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label6.setOpaque(true);
+        jPanel1.add(Label6);
+
+        Label7.setBackground(new java.awt.Color(51, 51, 51));
+        Label7.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label7.setText("7");
+        Label7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label7.setOpaque(true);
+        jPanel1.add(Label7);
+
+        Label8.setBackground(new java.awt.Color(51, 51, 51));
+        Label8.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label8.setText("8");
+        Label8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label8.setOpaque(true);
+        jPanel1.add(Label8);
+
+        Label9.setBackground(new java.awt.Color(51, 51, 51));
+        Label9.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label9.setText("9");
+        Label9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label9.setOpaque(true);
+        jPanel1.add(Label9);
+
+        Label10.setBackground(new java.awt.Color(51, 51, 51));
+        Label10.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label10.setText("10");
+        Label10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label10.setOpaque(true);
+        jPanel1.add(Label10);
+
+        Label11.setBackground(new java.awt.Color(51, 51, 51));
+        Label11.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label11.setText("11");
+        Label11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label11.setOpaque(true);
+        jPanel1.add(Label11);
+
+        Label12.setBackground(new java.awt.Color(51, 51, 51));
+        Label12.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label12.setText("12");
+        Label12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label12.setOpaque(true);
+        jPanel1.add(Label12);
+
+        Label13.setBackground(new java.awt.Color(51, 51, 51));
+        Label13.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label13.setText("13");
+        Label13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label13.setOpaque(true);
+        jPanel1.add(Label13);
+
+        Label14.setBackground(new java.awt.Color(51, 51, 51));
+        Label14.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label14.setText("14");
+        Label14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label14.setOpaque(true);
+        jPanel1.add(Label14);
+
+        Label15.setBackground(new java.awt.Color(51, 51, 51));
+        Label15.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label15.setText("15");
+        Label15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label15.setOpaque(true);
+        jPanel1.add(Label15);
+
+        Label16.setBackground(new java.awt.Color(51, 51, 51));
+        Label16.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label16.setText("16");
+        Label16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label16.setOpaque(true);
+        jPanel1.add(Label16);
+
+        Label17.setBackground(new java.awt.Color(51, 51, 51));
+        Label17.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label17.setText("17");
+        Label17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label17.setOpaque(true);
+        jPanel1.add(Label17);
+
+        Label18.setBackground(new java.awt.Color(51, 51, 51));
+        Label18.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label18.setText("18");
+        Label18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label18.setOpaque(true);
+        jPanel1.add(Label18);
+
+        Label19.setBackground(new java.awt.Color(51, 51, 51));
+        Label19.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label19.setText("19");
+        Label19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label19.setOpaque(true);
+        jPanel1.add(Label19);
+
+        Label20.setBackground(new java.awt.Color(51, 51, 51));
+        Label20.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label20.setText("20");
+        Label20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label20.setOpaque(true);
+        jPanel1.add(Label20);
+
+        Label21.setBackground(new java.awt.Color(51, 51, 51));
+        Label21.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label21.setText("21");
+        Label21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label21.setOpaque(true);
+        jPanel1.add(Label21);
+
+        Label22.setBackground(new java.awt.Color(51, 51, 51));
+        Label22.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label22.setText("22");
+        Label22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label22.setOpaque(true);
+        jPanel1.add(Label22);
+
+        Label23.setBackground(new java.awt.Color(51, 51, 51));
+        Label23.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label23.setText("23");
+        Label23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label23.setOpaque(true);
+        jPanel1.add(Label23);
+
+        Label24.setBackground(new java.awt.Color(51, 51, 51));
+        Label24.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label24.setText("24");
+        Label24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label24.setOpaque(true);
+        jPanel1.add(Label24);
+
+        Label25.setBackground(new java.awt.Color(51, 51, 51));
+        Label25.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label25.setText("25");
+        Label25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label25.setOpaque(true);
+        jPanel1.add(Label25);
+
+        Label26.setBackground(new java.awt.Color(51, 51, 51));
+        Label26.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label26.setText("26");
+        Label26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label26.setOpaque(true);
+        jPanel1.add(Label26);
+
+        Label27.setBackground(new java.awt.Color(51, 51, 51));
+        Label27.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label27.setText("27");
+        Label27.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label27.setOpaque(true);
+        jPanel1.add(Label27);
+
+        Label28.setBackground(new java.awt.Color(51, 51, 51));
+        Label28.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label28.setText("28");
+        Label28.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label28.setOpaque(true);
+        jPanel1.add(Label28);
+
+        Label29.setBackground(new java.awt.Color(51, 51, 51));
+        Label29.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label29.setText("29");
+        Label29.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label29.setOpaque(true);
+        jPanel1.add(Label29);
+
+        Label30.setBackground(new java.awt.Color(51, 51, 51));
+        Label30.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label30.setText("30");
+        Label30.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label30.setOpaque(true);
+        jPanel1.add(Label30);
+
+        Label31.setBackground(new java.awt.Color(51, 51, 51));
+        Label31.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label31.setText("31");
+        Label31.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label31.setOpaque(true);
+        jPanel1.add(Label31);
+
+        Label32.setBackground(new java.awt.Color(51, 51, 51));
+        Label32.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label32.setText("32");
+        Label32.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label32.setOpaque(true);
+        jPanel1.add(Label32);
+
+        Label33.setBackground(new java.awt.Color(51, 51, 51));
+        Label33.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label33.setText("33");
+        Label33.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label33.setOpaque(true);
+        jPanel1.add(Label33);
+
+        Label34.setBackground(new java.awt.Color(51, 51, 51));
+        Label34.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label34.setText("34");
+        Label34.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label34.setOpaque(true);
+        jPanel1.add(Label34);
+
+        Label35.setBackground(new java.awt.Color(51, 51, 51));
+        Label35.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label35.setText("35");
+        Label35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label35.setOpaque(true);
+        jPanel1.add(Label35);
+
+        Label36.setBackground(new java.awt.Color(51, 51, 51));
+        Label36.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label36.setText("36");
+        Label36.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label36.setOpaque(true);
+        jPanel1.add(Label36);
+
+        Label37.setBackground(new java.awt.Color(51, 51, 51));
+        Label37.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label37.setText("37");
+        Label37.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label37.setOpaque(true);
+        jPanel1.add(Label37);
+
+        Label38.setBackground(new java.awt.Color(51, 51, 51));
+        Label38.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label38.setText("38");
+        Label38.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label38.setOpaque(true);
+        jPanel1.add(Label38);
+
+        Label39.setBackground(new java.awt.Color(51, 51, 51));
+        Label39.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label39.setText("39");
+        Label39.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label39.setOpaque(true);
+        jPanel1.add(Label39);
+
+        Label40.setBackground(new java.awt.Color(51, 51, 51));
+        Label40.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label40.setText("40");
+        Label40.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label40.setOpaque(true);
+        jPanel1.add(Label40);
+
+        Label41.setBackground(new java.awt.Color(51, 51, 51));
+        Label41.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label41.setText("41");
+        Label41.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label41.setOpaque(true);
+        jPanel1.add(Label41);
+
+        Label42.setBackground(new java.awt.Color(51, 51, 51));
+        Label42.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label42.setText("42");
+        Label42.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label42.setOpaque(true);
+        jPanel1.add(Label42);
+
+        Label43.setBackground(new java.awt.Color(51, 51, 51));
+        Label43.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label43.setText("43");
+        Label43.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label43.setOpaque(true);
+        jPanel1.add(Label43);
+
+        Label44.setBackground(new java.awt.Color(51, 51, 51));
+        Label44.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label44.setText("44");
+        Label44.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label44.setOpaque(true);
+        jPanel1.add(Label44);
+
+        Label45.setBackground(new java.awt.Color(51, 51, 51));
+        Label45.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label45.setText("45");
+        Label45.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label45.setOpaque(true);
+        jPanel1.add(Label45);
+
+        Label46.setBackground(new java.awt.Color(51, 51, 51));
+        Label46.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label46.setText("46");
+        Label46.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label46.setOpaque(true);
+        jPanel1.add(Label46);
+
+        Label47.setBackground(new java.awt.Color(51, 51, 51));
+        Label47.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label47.setText("47");
+        Label47.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label47.setOpaque(true);
+        jPanel1.add(Label47);
+
+        Label48.setBackground(new java.awt.Color(51, 51, 51));
+        Label48.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label48.setText("48");
+        Label48.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label48.setOpaque(true);
+        jPanel1.add(Label48);
+
+        Label49.setBackground(new java.awt.Color(51, 51, 51));
+        Label49.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label49.setText("49");
+        Label49.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label49.setOpaque(true);
+        jPanel1.add(Label49);
+
+        Label50.setBackground(new java.awt.Color(51, 51, 51));
+        Label50.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label50.setText("50");
+        Label50.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label50.setOpaque(true);
+        jPanel1.add(Label50);
+
+        Label51.setBackground(new java.awt.Color(51, 51, 51));
+        Label51.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label51.setText("51");
+        Label51.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label51.setOpaque(true);
+        jPanel1.add(Label51);
+
+        Label52.setBackground(new java.awt.Color(51, 51, 51));
+        Label52.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label52.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label52.setText("52");
+        Label52.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label52.setOpaque(true);
+        jPanel1.add(Label52);
+
+        Label53.setBackground(new java.awt.Color(51, 51, 51));
+        Label53.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label53.setText("53");
+        Label53.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label53.setOpaque(true);
+        jPanel1.add(Label53);
+
+        Label54.setBackground(new java.awt.Color(51, 51, 51));
+        Label54.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label54.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label54.setText("54");
+        Label54.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label54.setOpaque(true);
+        jPanel1.add(Label54);
+
+        Label55.setBackground(new java.awt.Color(51, 51, 51));
+        Label55.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label55.setText("55");
+        Label55.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label55.setOpaque(true);
+        jPanel1.add(Label55);
+
+        Label56.setBackground(new java.awt.Color(51, 51, 51));
+        Label56.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label56.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label56.setText("56");
+        Label56.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label56.setOpaque(true);
+        jPanel1.add(Label56);
+
+        Label57.setBackground(new java.awt.Color(51, 51, 51));
+        Label57.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label57.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label57.setText("57");
+        Label57.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label57.setOpaque(true);
+        jPanel1.add(Label57);
+
+        Label58.setBackground(new java.awt.Color(51, 51, 51));
+        Label58.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label58.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label58.setText("58");
+        Label58.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label58.setOpaque(true);
+        jPanel1.add(Label58);
+
+        Label59.setBackground(new java.awt.Color(51, 51, 51));
+        Label59.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label59.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label59.setText("59");
+        Label59.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label59.setOpaque(true);
+        jPanel1.add(Label59);
+
+        Label60.setBackground(new java.awt.Color(51, 51, 51));
+        Label60.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label60.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label60.setText("60");
+        Label60.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label60.setOpaque(true);
+        jPanel1.add(Label60);
+
+        Label61.setBackground(new java.awt.Color(51, 51, 51));
+        Label61.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label61.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label61.setText("61");
+        Label61.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label61.setOpaque(true);
+        jPanel1.add(Label61);
+
+        Label62.setBackground(new java.awt.Color(51, 51, 51));
+        Label62.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label62.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label62.setText("62");
+        Label62.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label62.setOpaque(true);
+        jPanel1.add(Label62);
+
+        Label63.setBackground(new java.awt.Color(51, 51, 51));
+        Label63.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label63.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label63.setText("63");
+        Label63.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label63.setOpaque(true);
+        jPanel1.add(Label63);
+
+        Label64.setBackground(new java.awt.Color(51, 51, 51));
+        Label64.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label64.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label64.setText("64");
+        Label64.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label64.setOpaque(true);
+        jPanel1.add(Label64);
+
+        Label65.setBackground(new java.awt.Color(51, 51, 51));
+        Label65.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label65.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label65.setText("65");
+        Label65.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label65.setOpaque(true);
+        jPanel1.add(Label65);
+
+        Label66.setBackground(new java.awt.Color(51, 51, 51));
+        Label66.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label66.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label66.setText("66");
+        Label66.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label66.setOpaque(true);
+        jPanel1.add(Label66);
+
+        Label67.setBackground(new java.awt.Color(51, 51, 51));
+        Label67.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label67.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label67.setText("67");
+        Label67.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label67.setOpaque(true);
+        jPanel1.add(Label67);
+
+        Label68.setBackground(new java.awt.Color(51, 51, 51));
+        Label68.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label68.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label68.setText("68");
+        Label68.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label68.setOpaque(true);
+        jPanel1.add(Label68);
+
+        Label69.setBackground(new java.awt.Color(51, 51, 51));
+        Label69.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label69.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label69.setText("69");
+        Label69.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label69.setOpaque(true);
+        jPanel1.add(Label69);
+
+        Label70.setBackground(new java.awt.Color(51, 51, 51));
+        Label70.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label70.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label70.setText("70");
+        Label70.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label70.setOpaque(true);
+        jPanel1.add(Label70);
+
+        Label71.setBackground(new java.awt.Color(51, 51, 51));
+        Label71.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label71.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label71.setText("71");
+        Label71.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label71.setOpaque(true);
+        jPanel1.add(Label71);
+
+        Label72.setBackground(new java.awt.Color(51, 51, 51));
+        Label72.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label72.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label72.setText("72");
+        Label72.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label72.setOpaque(true);
+        jPanel1.add(Label72);
+
+        Label73.setBackground(new java.awt.Color(51, 51, 51));
+        Label73.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label73.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label73.setText("73");
+        Label73.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label73.setOpaque(true);
+        jPanel1.add(Label73);
+
+        Label74.setBackground(new java.awt.Color(51, 51, 51));
+        Label74.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label74.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label74.setText("74");
+        Label74.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label74.setOpaque(true);
+        jPanel1.add(Label74);
+
+        Label75.setBackground(new java.awt.Color(51, 51, 51));
+        Label75.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label75.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label75.setText("75");
+        Label75.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label75.setOpaque(true);
+        jPanel1.add(Label75);
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 0));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel2.setLayout(new java.awt.GridLayout(5, 0));
+
+        LabelB.setBackground(new java.awt.Color(51, 51, 51));
+        LabelB.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        LabelB.setForeground(new java.awt.Color(255, 0, 0));
+        LabelB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelB.setText("B");
+        LabelB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        LabelB.setOpaque(true);
+        jPanel2.add(LabelB);
+
+        LabelI.setBackground(new java.awt.Color(51, 51, 51));
+        LabelI.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        LabelI.setForeground(new java.awt.Color(255, 255, 0));
+        LabelI.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelI.setText("I");
+        LabelI.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        LabelI.setOpaque(true);
+        jPanel2.add(LabelI);
+
+        LabelN.setBackground(new java.awt.Color(51, 51, 51));
+        LabelN.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        LabelN.setForeground(new java.awt.Color(0, 204, 153));
+        LabelN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelN.setText("N");
+        LabelN.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        LabelN.setOpaque(true);
+        jPanel2.add(LabelN);
+
+        LabelG.setBackground(new java.awt.Color(51, 51, 51));
+        LabelG.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        LabelG.setForeground(new java.awt.Color(51, 153, 255));
+        LabelG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelG.setText("G");
+        LabelG.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        LabelG.setOpaque(true);
+        jPanel2.add(LabelG);
+
+        LabelO.setBackground(new java.awt.Color(51, 51, 51));
+        LabelO.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        LabelO.setForeground(new java.awt.Color(153, 0, 255));
+        LabelO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelO.setText("O");
+        LabelO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        LabelO.setOpaque(true);
+        jPanel2.add(LabelO);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1154, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Label1;
+    private javax.swing.JLabel Label10;
+    private javax.swing.JLabel Label11;
+    private javax.swing.JLabel Label12;
+    private javax.swing.JLabel Label13;
+    private javax.swing.JLabel Label14;
+    private javax.swing.JLabel Label15;
+    private javax.swing.JLabel Label16;
+    private javax.swing.JLabel Label17;
+    private javax.swing.JLabel Label18;
+    private javax.swing.JLabel Label19;
+    private javax.swing.JLabel Label2;
+    private javax.swing.JLabel Label20;
+    private javax.swing.JLabel Label21;
+    private javax.swing.JLabel Label22;
+    private javax.swing.JLabel Label23;
+    private javax.swing.JLabel Label24;
+    private javax.swing.JLabel Label25;
+    private javax.swing.JLabel Label26;
+    private javax.swing.JLabel Label27;
+    private javax.swing.JLabel Label28;
+    private javax.swing.JLabel Label29;
+    private javax.swing.JLabel Label3;
+    private javax.swing.JLabel Label30;
+    private javax.swing.JLabel Label31;
+    private javax.swing.JLabel Label32;
+    private javax.swing.JLabel Label33;
+    private javax.swing.JLabel Label34;
+    private javax.swing.JLabel Label35;
+    private javax.swing.JLabel Label36;
+    private javax.swing.JLabel Label37;
+    private javax.swing.JLabel Label38;
+    private javax.swing.JLabel Label39;
+    private javax.swing.JLabel Label4;
+    private javax.swing.JLabel Label40;
+    private javax.swing.JLabel Label41;
+    private javax.swing.JLabel Label42;
+    private javax.swing.JLabel Label43;
+    private javax.swing.JLabel Label44;
+    private javax.swing.JLabel Label45;
+    private javax.swing.JLabel Label46;
+    private javax.swing.JLabel Label47;
+    private javax.swing.JLabel Label48;
+    private javax.swing.JLabel Label49;
+    private javax.swing.JLabel Label5;
+    private javax.swing.JLabel Label50;
+    private javax.swing.JLabel Label51;
+    private javax.swing.JLabel Label52;
+    private javax.swing.JLabel Label53;
+    private javax.swing.JLabel Label54;
+    private javax.swing.JLabel Label55;
+    private javax.swing.JLabel Label56;
+    private javax.swing.JLabel Label57;
+    private javax.swing.JLabel Label58;
+    private javax.swing.JLabel Label59;
+    private javax.swing.JLabel Label6;
+    private javax.swing.JLabel Label60;
+    private javax.swing.JLabel Label61;
+    private javax.swing.JLabel Label62;
+    private javax.swing.JLabel Label63;
+    private javax.swing.JLabel Label64;
+    private javax.swing.JLabel Label65;
+    private javax.swing.JLabel Label66;
+    private javax.swing.JLabel Label67;
+    private javax.swing.JLabel Label68;
+    private javax.swing.JLabel Label69;
+    private javax.swing.JLabel Label7;
+    private javax.swing.JLabel Label70;
+    private javax.swing.JLabel Label71;
+    private javax.swing.JLabel Label72;
+    private javax.swing.JLabel Label73;
+    private javax.swing.JLabel Label74;
+    private javax.swing.JLabel Label75;
+    private javax.swing.JLabel Label8;
+    private javax.swing.JLabel Label9;
+    private javax.swing.JLabel LabelB;
+    private javax.swing.JLabel LabelG;
+    private javax.swing.JLabel LabelI;
+    private javax.swing.JLabel LabelN;
+    private javax.swing.JLabel LabelO;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lbl1;
-    private javax.swing.JLabel lbl10;
-    private javax.swing.JLabel lbl11;
-    private javax.swing.JLabel lbl12;
-    private javax.swing.JLabel lbl13;
-    private javax.swing.JLabel lbl14;
-    private javax.swing.JLabel lbl15;
-    private javax.swing.JLabel lbl16;
-    private javax.swing.JLabel lbl17;
-    private javax.swing.JLabel lbl18;
-    private javax.swing.JLabel lbl19;
-    private javax.swing.JLabel lbl2;
-    private javax.swing.JLabel lbl20;
-    private javax.swing.JLabel lbl21;
-    private javax.swing.JLabel lbl22;
-    private javax.swing.JLabel lbl23;
-    private javax.swing.JLabel lbl24;
-    private javax.swing.JLabel lbl25;
-    private javax.swing.JLabel lbl26;
-    private javax.swing.JLabel lbl27;
-    private javax.swing.JLabel lbl28;
-    private javax.swing.JLabel lbl29;
-    private javax.swing.JLabel lbl3;
-    private javax.swing.JLabel lbl30;
-    private javax.swing.JLabel lbl31;
-    private javax.swing.JLabel lbl32;
-    private javax.swing.JLabel lbl33;
-    private javax.swing.JLabel lbl34;
-    private javax.swing.JLabel lbl35;
-    private javax.swing.JLabel lbl36;
-    private javax.swing.JLabel lbl37;
-    private javax.swing.JLabel lbl38;
-    private javax.swing.JLabel lbl39;
-    private javax.swing.JLabel lbl4;
-    private javax.swing.JLabel lbl40;
-    private javax.swing.JLabel lbl41;
-    private javax.swing.JLabel lbl42;
-    private javax.swing.JLabel lbl43;
-    private javax.swing.JLabel lbl44;
-    private javax.swing.JLabel lbl45;
-    private javax.swing.JLabel lbl46;
-    private javax.swing.JLabel lbl47;
-    private javax.swing.JLabel lbl48;
-    private javax.swing.JLabel lbl49;
-    private javax.swing.JLabel lbl5;
-    private javax.swing.JLabel lbl50;
-    private javax.swing.JLabel lbl51;
-    private javax.swing.JLabel lbl52;
-    private javax.swing.JLabel lbl53;
-    private javax.swing.JLabel lbl54;
-    private javax.swing.JLabel lbl55;
-    private javax.swing.JLabel lbl56;
-    private javax.swing.JLabel lbl57;
-    private javax.swing.JLabel lbl58;
-    private javax.swing.JLabel lbl59;
-    private javax.swing.JLabel lbl6;
-    private javax.swing.JLabel lbl60;
-    private javax.swing.JLabel lbl61;
-    private javax.swing.JLabel lbl62;
-    private javax.swing.JLabel lbl63;
-    private javax.swing.JLabel lbl64;
-    private javax.swing.JLabel lbl65;
-    private javax.swing.JLabel lbl66;
-    private javax.swing.JLabel lbl67;
-    private javax.swing.JLabel lbl68;
-    private javax.swing.JLabel lbl69;
-    private javax.swing.JLabel lbl7;
-    private javax.swing.JLabel lbl70;
-    private javax.swing.JLabel lbl71;
-    private javax.swing.JLabel lbl72;
-    private javax.swing.JLabel lbl73;
-    private javax.swing.JLabel lbl74;
-    private javax.swing.JLabel lbl75;
-    private javax.swing.JLabel lbl8;
-    private javax.swing.JLabel lbl9;
-    private javax.swing.JLabel lblB;
-    private javax.swing.JLabel lblG;
-    private javax.swing.JLabel lblI;
-    private javax.swing.JLabel lblN;
-    private javax.swing.JLabel lblO;
     // End of variables declaration//GEN-END:variables
 }

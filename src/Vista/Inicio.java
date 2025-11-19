@@ -346,9 +346,8 @@ public class Inicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-  private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {      
-      
-    if (!btnAutomatico.isSelected() && !btnManual.isSelected()) {
+    private void btnIniciarJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarJuegoActionPerformed
+       if (!btnAutomatico.isSelected() && !btnManual.isSelected()) {
         JOptionPane.showMessageDialog(this, 
             "Debe seleccionar un Modo de Llenado.");
         return;
@@ -388,9 +387,6 @@ public class Inicio extends javax.swing.JFrame {
     JuegoGUI gw = new JuegoGUI(controlador, !marcadoAuto, llenadoAuto, modo);
     gw.setVisible(true);
     this.dispose();
-  }
-    private void btnIniciarJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarJuegoActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnIniciarJuegoActionPerformed
 
     private void btnAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutomaticoActionPerformed

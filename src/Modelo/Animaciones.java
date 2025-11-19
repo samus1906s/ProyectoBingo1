@@ -37,7 +37,7 @@ public class Animaciones {
 
         for (int i = 1; i <= 200; i++) {
 
-            String resourceName = "images/frame_" + i + ".png";
+            String resourceName = "imagenes/frame_" + i + ".png";
             URL url = cl.getResource(resourceName);
 
             if (url == null) break; 

@@ -261,6 +261,7 @@ public class CartonGUI extends javax.swing.JPanel {
         lbl25 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lblID = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
         lblB = new javax.swing.JLabel();
         lblI = new javax.swing.JLabel();
         lblN = new javax.swing.JLabel();
@@ -284,136 +285,187 @@ public class CartonGUI extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
         jPanel1.setLayout(new java.awt.GridLayout(5, 5));
 
+        lbl1.setBackground(new java.awt.Color(10, 14, 39));
         lbl1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl1.setOpaque(true);
         jPanel1.add(lbl1);
 
+        lbl2.setBackground(new java.awt.Color(10, 14, 39));
         lbl2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl2.setOpaque(true);
         jPanel1.add(lbl2);
 
+        lbl3.setBackground(new java.awt.Color(10, 14, 39));
         lbl3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl3.setOpaque(true);
         jPanel1.add(lbl3);
 
+        lbl4.setBackground(new java.awt.Color(10, 14, 39));
         lbl4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl4.setOpaque(true);
         jPanel1.add(lbl4);
 
+        lbl5.setBackground(new java.awt.Color(10, 14, 39));
         lbl5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl5.setOpaque(true);
         jPanel1.add(lbl5);
 
+        lbl6.setBackground(new java.awt.Color(10, 14, 39));
         lbl6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl6.setOpaque(true);
         jPanel1.add(lbl6);
 
+        lbl7.setBackground(new java.awt.Color(10, 14, 39));
         lbl7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl7.setOpaque(true);
         jPanel1.add(lbl7);
 
+        lbl8.setBackground(new java.awt.Color(10, 14, 39));
         lbl8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl8.setOpaque(true);
         jPanel1.add(lbl8);
 
+        lbl9.setBackground(new java.awt.Color(10, 14, 39));
         lbl9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl9.setOpaque(true);
         jPanel1.add(lbl9);
 
+        lbl10.setBackground(new java.awt.Color(10, 14, 39));
         lbl10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl10.setOpaque(true);
         jPanel1.add(lbl10);
 
+        lbl11.setBackground(new java.awt.Color(10, 14, 39));
         lbl11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl11.setOpaque(true);
         jPanel1.add(lbl11);
 
+        lbl12.setBackground(new java.awt.Color(10, 14, 39));
         lbl12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl12.setOpaque(true);
         jPanel1.add(lbl12);
 
+        lblFree.setBackground(new java.awt.Color(10, 14, 39));
         lblFree.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblFree.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblFree.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Free.png"))); // NOI18N
         lblFree.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
         lblFree.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblFree.setOpaque(true);
         jPanel1.add(lblFree);
 
+        lbl14.setBackground(new java.awt.Color(10, 14, 39));
         lbl14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl14.setOpaque(true);
         jPanel1.add(lbl14);
 
+        lbl15.setBackground(new java.awt.Color(10, 14, 39));
         lbl15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl15.setOpaque(true);
         jPanel1.add(lbl15);
 
+        lbl16.setBackground(new java.awt.Color(10, 14, 39));
         lbl16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl16.setOpaque(true);
         jPanel1.add(lbl16);
 
+        lbl17.setBackground(new java.awt.Color(10, 14, 39));
         lbl17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl17.setOpaque(true);
         jPanel1.add(lbl17);
 
+        lbl18.setBackground(new java.awt.Color(10, 14, 39));
         lbl18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl18.setOpaque(true);
         jPanel1.add(lbl18);
 
+        lbl19.setBackground(new java.awt.Color(10, 14, 39));
         lbl19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl19.setOpaque(true);
         jPanel1.add(lbl19);
 
+        lbl20.setBackground(new java.awt.Color(10, 14, 39));
         lbl20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl20.setOpaque(true);
         jPanel1.add(lbl20);
 
+        lbl21.setBackground(new java.awt.Color(10, 14, 39));
         lbl21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl21.setOpaque(true);
         jPanel1.add(lbl21);
 
+        lbl22.setBackground(new java.awt.Color(10, 14, 39));
         lbl22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl22.setOpaque(true);
         jPanel1.add(lbl22);
 
+        lbl23.setBackground(new java.awt.Color(10, 14, 39));
         lbl23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl23.setOpaque(true);
         jPanel1.add(lbl23);
 
+        lbl24.setBackground(new java.awt.Color(10, 14, 39));
         lbl24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl24.setOpaque(true);
         jPanel1.add(lbl24);
 
+        lbl25.setBackground(new java.awt.Color(10, 14, 39));
         lbl25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
         lbl25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        lbl25.setOpaque(true);
         jPanel1.add(lbl25);
 
         jPanel3.setBackground(new java.awt.Color(10, 14, 39));
 
         lblID.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblID.setForeground(new java.awt.Color(255, 255, 255));
         lblID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblID.setText("ID:");
 
@@ -422,9 +474,9 @@ public class CartonGUI extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(337, 337, 337)
+                .addGap(160, 160, 160)
                 .addComponent(lblID)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,56 +485,47 @@ public class CartonGUI extends javax.swing.JPanel {
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
+        jPanel4.setBackground(new java.awt.Color(10, 14, 39));
+        jPanel4.setLayout(new java.awt.GridLayout(0, 5));
+
         lblB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/B.png"))); // NOI18N
+        jPanel4.add(lblB);
 
         lblI.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/I.png"))); // NOI18N
+        jPanel4.add(lblI);
 
         lblN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/N.png"))); // NOI18N
+        jPanel4.add(lblN);
 
         lblG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/G.png"))); // NOI18N
+        jPanel4.add(lblG);
 
         lblO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/O.png"))); // NOI18N
+        jPanel4.add(lblO);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(lblB, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblI, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85)
-                .addComponent(lblN, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87)
-                .addComponent(lblG, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
-                .addComponent(lblO, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblO, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblN, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblG, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblI, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblB, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -492,6 +535,7 @@ public class CartonGUI extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl10;
     private javax.swing.JLabel lbl11;
