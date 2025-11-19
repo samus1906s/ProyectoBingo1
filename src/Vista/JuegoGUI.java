@@ -11,15 +11,6 @@ import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
-import Vista.LlenadoManualDialog;
-import Vista.Inicio;
-import Vista.WinnerPanel;
-import Vista.PanelFondo;
-
-
-import Vista.PanelCartonesGUI;
-
-import Vista.TombolaGUI;
 
 public class JuegoGUI extends javax.swing.JFrame {
    
@@ -42,13 +33,13 @@ public class JuegoGUI extends javax.swing.JFrame {
     setLocationRelativeTo(null);
     
     panelMenu.setLayout(new BorderLayout());
-    PanelFondo fondoMenu = new PanelFondo("C:\\Users\\Valdelomaar\\Documents\\NetBeansProjects\\ProyectoBingo1\\src\\imagenes\\mesa_morada.png");
+    PanelFondo fondoMenu = new PanelFondo("C:\\Users\\Valdelomaar\\Documents\\NetBeansProjects\\ProyectoBingo1\\src\\imagenes\\mesa_cafe.png");
      fondoMenu.setLayout(new BorderLayout());  
     panelMenu.add(fondoMenu, BorderLayout.CENTER);
 
    
 
-    PanelFondo fondo = new PanelFondo("C:\\Users\\Valdelomaar\\Documents\\NetBeansProjects\\ProyectoBingo1\\src\\imagenes\\mesa_morada.png");
+    PanelFondo fondo = new PanelFondo("C:\\Users\\Valdelomaar\\Documents\\NetBeansProjects\\ProyectoBingo1\\src\\imagenes\\mesa_cafe.png");
     fondo.setLayout(new BorderLayout());
 
 
