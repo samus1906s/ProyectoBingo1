@@ -4,18 +4,17 @@
  */
 package Vista;
 
-//import javax.swing.JOptionPane;
-//import src.controller.JuegoController;
-//import model.core.Juego;
-//import model.enums.ModoJuego;
-//import view.PanelCartones;
+import javax.swing.JOptionPane;
+import Controlador.JuegoControlador;
+import Modelo.Juego;
+import Modelo.ModoJuego;
 /**
  *
  * @author je110
  */
 public class Inicio extends javax.swing.JFrame {
-    //private JuegoController juegoController;
-    //private PanelCartones panelCartones;
+    private JuegoControlador juegoControlador;
+    private PanelCartonesGUI panelCartones;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Inicio.class.getName());
 
     /**
@@ -23,9 +22,9 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
-        //rbLlenadoAuto.setSelected(true);
-        //rbMarcadoAuto.setSelected(true);
-        //rbNormal.setSelected(true);
+        btnAutomatico.setSelected(true);
+        btnAutomatico2.setSelected(true);
+        btnNormal.setSelected(true);
     }
 
     /**
@@ -347,54 +346,49 @@ public class Inicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-  //private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {                                           
-          // Validar llenado
-    //if (!rbLlenadoAuto.isSelected() && !rbLlenadoManual.isSelected()) {
-        //JOptionPane.showMessageDialog(this, 
-            //"Debe seleccionar un Modo de Llenado.");
-        //return;
-    //}
+  private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {      
+      
+    if (!btnAutomatico.isSelected() && !btnManual.isSelected()) {
+        JOptionPane.showMessageDialog(this, 
+            "Debe seleccionar un Modo de Llenado.");
+        return;
+    }
 
-    // Validar marcado
-    //if (!rbMarcadoAuto.isSelected() && !rbMarcadoManual.isSelected()) {
-        //JOptionPane.showMessageDialog(this, 
-            //"Debe seleccionar un Modo de Marcado.");
-        //return;
-    //}
+    if (!btnAutomatico2.isSelected() && !btnManual2.isSelected()) {
+        JOptionPane.showMessageDialog(this, 
+            "Debe seleccionar un Modo de Marcado.");
+        return;
+    }
 
-    // Validar modo de juego
-    //if (!rbNormal.isSelected() && 
-        //!rbCuatroEsquinas.isSelected() &&
-        //!rbCartonLleno.isSelected()) 
-    //{
-        //JOptionPane.showMessageDialog(this, 
-            //"Debe seleccionar un Modo de Juego.");
-        //return;
-    //}
+    if (!btnNormal.isSelected() && !btnCuatroEsquinas.isSelected() && !btnLleno.isSelected()) 
+    {
+        JOptionPane.showMessageDialog(this, 
+            "Debe seleccionar un Modo de Juego.");
+        return;
+    }
 
-    // ✔ Si pasa todas las validaciones:
+    boolean llenadoAuto = btnAutomatico.isSelected();
+    boolean marcadoAuto = btnAutomatico2.isSelected();
 
-    //boolean llenadoAuto = rbLlenadoAuto.isSelected();
-    //boolean marcadoAuto = rbMarcadoAuto.isSelected();
+    ModoJuego modo;
+    if (btnCuatroEsquinas.isSelected()) {
+        modo = ModoJuego.CUATROESQUINAS;
+    } else if (btnLleno.isSelected()) {
+        modo = ModoJuego.CARTONLLENO;
+    } else {
+        modo = ModoJuego.NORMAL;
+    }
 
-    //ModoJuego modo;
-    //if (rbCuatroEsquinas.isSelected()) {
-        //modo = ModoJuego.CUATRO_ESQUINAS;
-    //} else if (rbCartonLleno.isSelected()) {
-        //modo = ModoJuego.CARTON_LLENO;
-    //} else {
-        //modo = ModoJuego.NORMAL;
-    //}
+    Juego juego = new Juego();
+    juego.setModoJuego(modo);
+    juego.setMarcadoAutomatico(marcadoAuto);
 
-    //Juego juego = new Juego();
-    //juego.setModoJuego(modo);
-    //juego.setMarcadoAutomatico(marcadoAuto);
+    JuegoControlador controlador = new JuegoControlador(juego);
 
-    //JuegoController controller = new JuegoController(juego);
-
-    //GameWindowForm gw = new GameWindowForm(controller, !marcadoAuto, llenadoAuto, modo);
-    //gw.setVisible(true);
-    //this.dispose();
+    JuegoGUI gw = new JuegoGUI(controlador, !marcadoAuto, llenadoAuto, modo);
+    gw.setVisible(true);
+    this.dispose();
+  }
     private void btnIniciarJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarJuegoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnIniciarJuegoActionPerformed
@@ -433,11 +427,11 @@ public class Inicio extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        //java.awt.EventQueue.invokeLater(new Runnable() {
-            //public void run() {
-                //new StartWindowFrame().setVisible(true);
-            //}
-        //});
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+               //new JuegoGUI().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
