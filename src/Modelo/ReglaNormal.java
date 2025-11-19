@@ -10,15 +10,15 @@ package Modelo;
  */
 public class ReglaNormal implements ReglaVictoria{
 
-  /*  @Override
-    public boolean esGanador(Cartones carton) {
-         Casillas[][] c = carton.getCasillas();
+    @Override
+    public boolean esGanador(Carton carton) {
+         Casillas[][] c = carton.getEspacios();
 
     //  Juego Horizontal 
     for (int fila = 0; fila < 5; fila++) {
         boolean completa = true;
         for (int col = 0; col < 5; col++) {
-            if (!c[fila][col].isMarcado()) {
+            if (!c[fila][col].isMarcados()) {
                 completa = false;
                 break;
             }
@@ -32,7 +32,7 @@ public class ReglaNormal implements ReglaVictoria{
     for (int col = 0; col < 5; col++) {
         boolean completa = true;
         for (int fila = 0; fila < 5; fila++) {
-            if (!c[fila][col].isMarcado()) {
+            if (!c[fila][col].isMarcados()) {
                 completa = false;
                 break;
             }
@@ -45,7 +45,7 @@ public class ReglaNormal implements ReglaVictoria{
     //  Juego Diagonal Primero   
     boolean diag1 = true;
     for (int i = 0; i < 5; i++) {
-        if (!c[i][i].isMarcado()) {
+        if (!c[i][i].isMarcados()) {
             diag1 = false;
             break;
         }
@@ -57,7 +57,7 @@ public class ReglaNormal implements ReglaVictoria{
     //   Juego Diagonal Segundo 
     boolean diag2 = true;
     for (int i = 0; i < 5; i++) {
-        if (!c[i][4 - i].isMarcado()) {
+        if (!c[i][4 - i].isMarcados()) {
             diag2 = false;
             break;
         }
