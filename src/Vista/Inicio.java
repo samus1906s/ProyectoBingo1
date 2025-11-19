@@ -38,6 +38,7 @@ public class Inicio extends javax.swing.JFrame {
 
         grupoLlenado = new javax.swing.ButtonGroup();
         grupoMarcado = new javax.swing.ButtonGroup();
+        grupoModo = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         lblIcon = new javax.swing.JLabel();
@@ -54,12 +55,12 @@ public class Inicio extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         lblIcon4 = new javax.swing.JLabel();
         lblModoJuego = new javax.swing.JLabel();
-        btnCuatroEsquinas = new javax.swing.JButton();
-        btnNormal = new javax.swing.JButton();
-        btnLleno = new javax.swing.JButton();
         lblNormal = new javax.swing.JLabel();
         lblCuatroEsquinas = new javax.swing.JLabel();
         lblLleno = new javax.swing.JLabel();
+        btnNormal = new javax.swing.JRadioButton();
+        btnLleno = new javax.swing.JRadioButton();
+        btnCuatroEsquinas = new javax.swing.JRadioButton();
         btnIniciarJuego = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -193,20 +194,6 @@ public class Inicio extends javax.swing.JFrame {
         lblModoJuego.setForeground(new java.awt.Color(10, 14, 39));
         lblModoJuego.setText("Modo de Juego:");
 
-        btnCuatroEsquinas.setBackground(new java.awt.Color(18, 43, 62));
-        btnCuatroEsquinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/CuatroEsquinas.png"))); // NOI18N
-
-        btnNormal.setBackground(new java.awt.Color(18, 43, 62));
-        btnNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/normal.png"))); // NOI18N
-        btnNormal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNormalActionPerformed(evt);
-            }
-        });
-
-        btnLleno.setBackground(new java.awt.Color(18, 43, 62));
-        btnLleno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Lleno.jpg"))); // NOI18N
-
         lblNormal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblNormal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Normal (2).png"))); // NOI18N
@@ -218,6 +205,17 @@ public class Inicio extends javax.swing.JFrame {
         lblLleno.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblLleno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLleno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Lleno.png"))); // NOI18N
+
+        grupoModo.add(btnNormal);
+
+        grupoModo.add(btnLleno);
+
+        grupoModo.add(btnCuatroEsquinas);
+        btnCuatroEsquinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCuatroEsquinasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -232,18 +230,19 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(lblModoJuego)
                         .addContainerGap(363, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
                         .addComponent(btnNormal)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblNormal, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
+                        .addComponent(lblNormal)
+                        .addGap(69, 69, 69)
                         .addComponent(btnLleno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblLleno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCuatroEsquinas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCuatroEsquinas, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblCuatroEsquinas, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,26 +251,21 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblModoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblIcon4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnNormal)
-                            .addComponent(btnLleno)
-                            .addComponent(btnCuatroEsquinas))
-                        .addContainerGap(21, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(lblNormal, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(lblCuatroEsquinas, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(lblLleno, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42))))))
+                        .addComponent(btnNormal)
+                        .addGap(50, 50, 50))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(lblNormal, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnLleno)
+                            .addComponent(lblLleno, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCuatroEsquinas)
+                            .addComponent(lblCuatroEsquinas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(42, 42, 42))))
         );
 
         btnIniciarJuego.setBackground(new java.awt.Color(10, 14, 39));
@@ -323,7 +317,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnIniciarJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -383,13 +377,13 @@ public class Inicio extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_btnIniciarJuegoActionPerformed
 
-    private void btnNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNormalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNormalActionPerformed
-
     private void btnLlenadoManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLlenadoManualActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLlenadoManualActionPerformed
+
+    private void btnCuatroEsquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuatroEsquinasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCuatroEsquinasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,16 +415,17 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCuatroEsquinas;
+    private javax.swing.JRadioButton btnCuatroEsquinas;
     private javax.swing.JButton btnIniciarJuego;
     private javax.swing.JRadioButton btnLlenadoAutomatico;
     private javax.swing.JRadioButton btnLlenadoManual;
-    private javax.swing.JButton btnLleno;
+    private javax.swing.JRadioButton btnLleno;
     private javax.swing.JRadioButton btnMarcadoAutomatico;
     private javax.swing.JRadioButton btnMarcadoManual;
-    private javax.swing.JButton btnNormal;
+    private javax.swing.JRadioButton btnNormal;
     private javax.swing.ButtonGroup grupoLlenado;
     private javax.swing.ButtonGroup grupoMarcado;
+    private javax.swing.ButtonGroup grupoModo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
