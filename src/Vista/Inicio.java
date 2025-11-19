@@ -429,7 +429,7 @@ public class Inicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               //new JuegoGUI().setVisible(true);
+               new Inicio().setVisible(true);
             }
         });
     }
