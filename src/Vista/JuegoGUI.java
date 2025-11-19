@@ -17,16 +17,15 @@ import Vista.WinnerPanel;
 import Vista.PanelFondo;
 
 
-import Modelo.PanelCartones;
+import Vista.PanelCartonesGUI;
 
 import Vista.TombolaGUI;
-import Vista.PanelGanadorGUI;
 
 public class JuegoGUI extends javax.swing.JFrame {
    
-     private JuegoControlador controller;
+     private JuegoControlador controlador;
     private boolean llenadoAutomatico;
-    private PanelCartones panelCartones;
+    private PanelCartonesGUI panelCartones;
     private TombolaGUI panelTombola;
     
 
@@ -38,7 +37,7 @@ public class JuegoGUI extends javax.swing.JFrame {
                       ModoJuego modoJuego) {
 
     initComponents();
-    this.controller = controller;
+    this.controlador = controller;
     this.llenadoAutomatico = llenadoAutomatico;
     setLocationRelativeTo(null);
     
@@ -53,7 +52,7 @@ public class JuegoGUI extends javax.swing.JFrame {
     fondo.setLayout(new BorderLayout());
 
 
-    panelCartones = new PanelCartones(controller);
+    panelCartones = new PanelCartonesGUI(controller);
     panelCartones.setOpaque(false);
     panelCartones.setModoMarcadoManual(marcadoManual);
 
@@ -74,7 +73,7 @@ public class JuegoGUI extends javax.swing.JFrame {
     panelEstadoGanadores.setEstadoGanador(false);
 
 
-    panelTombola = new PanelTombolaUI();
+    panelTombola = new TombolaGUI();
     panelTombolaContainer.setLayout(new BorderLayout());
     panelTombolaContainer.add(panelTombola, BorderLayout.CENTER);
 
@@ -417,7 +416,7 @@ public class JuegoGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarActionPerformed
-        controller.reiniciarJuego();
+        controlador.reiniciarJuego();
         lblUltimoNumero.setText("Último número: -");
 
         panelEstadoGanadores.setEstadoGanador(false);
@@ -428,7 +427,7 @@ public class JuegoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReiniciarActionPerformed
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
-      var ganadores = controller.obtenerGanadores();
+      var ganadores = controlador.obtenerGanadores();
     if (ganadores.isEmpty()) {
         JOptionPane.showMessageDialog(this, "No hay ganadores todavía.");
         return;
@@ -443,7 +442,7 @@ public class JuegoGUI extends javax.swing.JFrame {
 
 
     for (var c : ganadores) {
-        new WinnerPanel(this, c, controller).setVisible(true);
+        new WinnerPanel(this, c, controlador).setVisible(true);
     }
     }//GEN-LAST:event_btnVerificarActionPerformed
     
@@ -458,14 +457,14 @@ public class JuegoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverMenuActionPerformed
 
     private void btnExtraerNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExtraerNumeroActionPerformed
-          if (controller.getCartones().isEmpty()) {
+          if (controlador.getCartones().isEmpty()) {
             JOptionPane.showMessageDialog(
                     this,
                     "Debe crear al menos un cartón antes de extraer números.");
             return;
         }
 
-        int numero = controller.extraerSiguienteNumero();
+        int numero = controlador.extraerSiguienteNumero();
         if (numero == -1) {
             JOptionPane.showMessageDialog(this, "No hay más números disponibles.");
             return;
@@ -476,7 +475,7 @@ public class JuegoGUI extends javax.swing.JFrame {
         panelTombola.agregarNumero(numero);
         panelCartones.refrescarCartones();
 
-        var ganadores = controller.obtenerGanadores();
+        var ganadores = controlador.obtenerGanadores();
 
         if (ganadores.isEmpty()) {
             panelEstadoGanadores.setEstadoGanador(false);
@@ -494,7 +493,7 @@ public class JuegoGUI extends javax.swing.JFrame {
             JOptionPane.YES_NO_OPTION);
 
         if (confirm == JOptionPane.YES_OPTION) {
-            controller.eliminarTodosCartones();
+            controlador.eliminarTodosCartones();
             refrescarCartones();
         }
     }//GEN-LAST:event_btnEliminarTodosActionPerformed
@@ -508,14 +507,14 @@ public class JuegoGUI extends javax.swing.JFrame {
         return;
     }
 
-    Carton encontrado = controller.buscarCartonPorId(id);
+    Carton encontrado = controlador.buscarCartonPorId(id);
     if (encontrado == null) {
         JOptionPane.showMessageDialog(this,
                 "No existe un cartón con ese ID.");
         return;
     }
 
-    controller.eliminarCartonPorId(id);
+    controlador.eliminarCartonPorId(id);
     panelCartones.refrescarCartones();
 
     lblEliminado.setText("ELIMINADO");
@@ -530,7 +529,7 @@ public class JuegoGUI extends javax.swing.JFrame {
             "¿Seguro que desea limpiar todos los cartones?",
             "Confirmar",
             JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-        controller.limpiarCartones();
+        controlador.limpiarCartones();
         panelCartones.refrescarCartones();
         }
     }//GEN-LAST:event_btnLimpiarCartonesActionPerformed
@@ -546,7 +545,7 @@ public class JuegoGUI extends javax.swing.JFrame {
         boolean creado = false;
 
         if (llenadoAutomatico) {
-            Carton c = controller.crearCartonAutomatico(id);
+            Carton c = controlador.crearCartonAutomatico(id);
             if (c == null) {
                 JOptionPane.showMessageDialog(this,
                     "Ya existe un cartón con ese ID.");
@@ -554,7 +553,7 @@ public class JuegoGUI extends javax.swing.JFrame {
             }
             creado = true;
         } else {
-            LlenadoManualDialog dlg = new LlenadoManualDialog(this, controller, id);
+            LlenadoManualDialog dlg = new LlenadoManualDialog(this, controlador, id);
             dlg.setVisible(true);
             if (!dlg.fueCreado()) return;
             creado = true;
@@ -572,7 +571,7 @@ public class JuegoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearCartonActionPerformed
 
     public void actualizarEstadoGanadores() {
-        var ganadores = controller.obtenerGanadores();
+        var ganadores = controlador.obtenerGanadores();
 
         if (ganadores.isEmpty()) {
             panelEstadoGanadores.setEstadoGanador(false);
