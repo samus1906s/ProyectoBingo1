@@ -51,10 +51,10 @@ public class Juego {
             case NORMAL:
                 this.reglaVictoria = new ReglaNormal();
                 break;
-            case CUATRO_ESQUINAS:
+            case CUATROESQUINAS:
                 this.reglaVictoria = new ReglaCuatroEsquinas();
                 break;
-            case CARTON_LLENO:
+            case CARTONLLENO:
                 this.reglaVictoria = new ReglaCartonLleno();
                 break;
         }
@@ -211,7 +211,7 @@ public class Juego {
         List<Point> pts = new ArrayList<>();
         Casillas[][] c = carton.getEspacios();
 
-        if (modoJuego == ModoJuego.CUATRO_ESQUINAS) {
+        if (modoJuego == ModoJuego.CUATROESQUINAS) {
             boolean esquinas =
                     c[0][0].isMarcados() &&
                     c[0][4].isMarcados() &&
@@ -226,7 +226,7 @@ public class Juego {
             return pts;
         }
 
-        if (modoJuego == ModoJuego.CARTON_LLENO) {
+        if (modoJuego == ModoJuego.CARTONLLENO) {
             boolean lleno = true;
             for (int fila = 0; fila < 5; fila++) {
                 for (int col = 0; col < 5; col++) {
