@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
+
 package Vista;
 
 import java.awt.Color;
@@ -14,10 +15,10 @@ import Modelo.Carton;
 import Modelo.Casillas;
 /**
  *
- * @author je110
+ * @author Valdelomaar
  */
 public class CartonGUI extends javax.swing.JPanel {
-    private JLabel[][] labels;
+     private JLabel[][] labels;
     private Carton cartonActual;
     private List<Point> casillasResaltadas = new ArrayList<>();
     private boolean blinkState = true;
@@ -31,12 +32,13 @@ public class CartonGUI extends javax.swing.JPanel {
 
     private float clickHighlightAlpha = 0f;
     private Timer clickTimer;
+
     /**
-     * Creates new form Cartón
+     * Creates new form PanelCartonUI
      */
     public CartonGUI() {
         initComponents();
-        labels = new JLabel[][]{ {lbl1, lbl2, lbl3, lbl4, lbl5}, {lbl6, lbl7, lbl8, lbl9, lbl10}, {lbl11, lbl12, lblFree, lbl14, lbl15}, {lbl16, lbl17, lbl18, lbl19, lbl20}, {lbl21, lbl22, lbl23, lbl24, lbl25} };
+        labels = new JLabel[][]{ {Label1, Label2, Label3, Label4, Label5}, {Label6, Label7, Label8, Label9, Label10}, {Label11, Label12, Label13, Label14, Label15}, {Label16, Label17, Label18, Label19, Label20}, {Label21, Label22, Label23, Label24, Label25} };
 
         for (int f = 0; f < 5; f++) {
             for (int c = 0; c < 5; c++) {
@@ -57,7 +59,7 @@ public class CartonGUI extends javax.swing.JPanel {
         else cs.marcar();
 
         mostrarCarton(cartonActual);
-        animacionClickSuave();
+         animacionClickSuave();
 
         java.awt.Container parent = CartonGUI.this.getParent();
         while (parent != null && !(parent instanceof JuegoGUI)) {
@@ -68,12 +70,12 @@ public class CartonGUI extends javax.swing.JPanel {
             gw.actualizarEstadoGanadores();
         }
     }
-});
+                });
                 
             }
         }
     }
- 
+
     public Carton getCartonActual() {
         return cartonActual;
     }
@@ -89,8 +91,7 @@ public class CartonGUI extends javax.swing.JPanel {
         java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
 
         if (fadeAlpha > 0f) {
-            g2.setComposite(java.awt.AlphaComposite.getInstance(
-                    java.awt.AlphaComposite.SRC_OVER, fadeAlpha));
+            g2.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER, fadeAlpha));
             g2.setColor(new java.awt.Color(0, 255, 0, 60));
             g2.fillRoundRect(0, 0, getWidth(), getHeight(), 25, 25);
         }
@@ -102,7 +103,7 @@ public class CartonGUI extends javax.swing.JPanel {
             g2.setColor(new java.awt.Color(255, 215, 0, alphaGlow));
             int grosor = 6;
             for (int i = 0; i < 3; i++) {
-                g2.drawRoundRect(grosor / 2 + i, grosor / 2 + i, getWidth() - grosor - 2 * i, getHeight() - grosor - 2 * i, 30, 30);
+                g2.drawRoundRect( grosor / 2 + i, grosor / 2 + i, getWidth() - grosor - 2 * i, getHeight() - grosor - 2 * i, 30, 30 );
             }
         }
 
@@ -181,7 +182,7 @@ public class CartonGUI extends javax.swing.JPanel {
     public void mostrarCarton(Carton carton) {
         this.cartonActual = carton;
 
-        lblID.setText("ID: " + carton.getId());
+        LabelID.setText("ID: " + carton.getId());
         Casillas[][] cs = carton.getEspacios();
 
         for (int f = 0; f < 5; f++) {
@@ -200,11 +201,13 @@ public class CartonGUI extends javax.swing.JPanel {
                         lbl.setBackground(new Color(45, 45, 45));
                     }
                 }
+
                 if (casillasResaltadas.contains(new Point(f, c)) && blinkState) {
                     lbl.setBackground(Color.YELLOW);
                 }
             }
         }
+
         revalidate();
         repaint();
     }
@@ -221,8 +224,9 @@ public class CartonGUI extends javax.swing.JPanel {
                 mostrarCarton(cartonActual);
             }
         });
-       t.start();
+        t.start();
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -232,340 +236,333 @@ public class CartonGUI extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        lbl1 = new javax.swing.JLabel();
-        lbl2 = new javax.swing.JLabel();
-        lbl3 = new javax.swing.JLabel();
-        lbl4 = new javax.swing.JLabel();
-        lbl5 = new javax.swing.JLabel();
-        lbl6 = new javax.swing.JLabel();
-        lbl7 = new javax.swing.JLabel();
-        lbl8 = new javax.swing.JLabel();
-        lbl9 = new javax.swing.JLabel();
-        lbl10 = new javax.swing.JLabel();
-        lbl11 = new javax.swing.JLabel();
-        lbl12 = new javax.swing.JLabel();
-        lblFree = new javax.swing.JLabel();
-        lbl14 = new javax.swing.JLabel();
-        lbl15 = new javax.swing.JLabel();
-        lbl16 = new javax.swing.JLabel();
-        lbl17 = new javax.swing.JLabel();
-        lbl18 = new javax.swing.JLabel();
-        lbl19 = new javax.swing.JLabel();
-        lbl20 = new javax.swing.JLabel();
-        lbl21 = new javax.swing.JLabel();
-        lbl22 = new javax.swing.JLabel();
-        lbl23 = new javax.swing.JLabel();
-        lbl24 = new javax.swing.JLabel();
-        lbl25 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        lblID = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        lblB = new javax.swing.JLabel();
-        lblI = new javax.swing.JLabel();
-        lblN = new javax.swing.JLabel();
-        lblG = new javax.swing.JLabel();
-        lblO = new javax.swing.JLabel();
+        LabelB = new javax.swing.JLabel();
+        LabelI = new javax.swing.JLabel();
+        LabelN = new javax.swing.JLabel();
+        LabelG = new javax.swing.JLabel();
+        LabelO = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        Label1 = new javax.swing.JLabel();
+        Label2 = new javax.swing.JLabel();
+        Label3 = new javax.swing.JLabel();
+        Label4 = new javax.swing.JLabel();
+        Label5 = new javax.swing.JLabel();
+        Label6 = new javax.swing.JLabel();
+        Label7 = new javax.swing.JLabel();
+        Label8 = new javax.swing.JLabel();
+        Label9 = new javax.swing.JLabel();
+        Label10 = new javax.swing.JLabel();
+        Label11 = new javax.swing.JLabel();
+        Label12 = new javax.swing.JLabel();
+        Label13 = new javax.swing.JLabel();
+        Label14 = new javax.swing.JLabel();
+        Label15 = new javax.swing.JLabel();
+        Label16 = new javax.swing.JLabel();
+        Label17 = new javax.swing.JLabel();
+        Label18 = new javax.swing.JLabel();
+        Label19 = new javax.swing.JLabel();
+        Label20 = new javax.swing.JLabel();
+        Label21 = new javax.swing.JLabel();
+        Label22 = new javax.swing.JLabel();
+        Label23 = new javax.swing.JLabel();
+        Label24 = new javax.swing.JLabel();
+        Label25 = new javax.swing.JLabel();
+        LabelID = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        setBackground(new java.awt.Color(51, 51, 51));
+        setForeground(new java.awt.Color(51, 51, 51));
 
-        setBackground(new java.awt.Color(10, 14, 39));
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel3.setLayout(new java.awt.GridLayout(1, 5));
 
-        jPanel1.setBackground(new java.awt.Color(10, 14, 39));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
+        LabelB.setBackground(new java.awt.Color(51, 51, 51));
+        LabelB.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        LabelB.setForeground(new java.awt.Color(255, 0, 0));
+        LabelB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelB.setText("B");
+        LabelB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        LabelB.setOpaque(true);
+        jPanel3.add(LabelB);
+
+        LabelI.setBackground(new java.awt.Color(51, 51, 51));
+        LabelI.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        LabelI.setForeground(new java.awt.Color(255, 255, 51));
+        LabelI.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelI.setText("I");
+        LabelI.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        LabelI.setOpaque(true);
+        jPanel3.add(LabelI);
+
+        LabelN.setBackground(new java.awt.Color(51, 51, 51));
+        LabelN.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        LabelN.setForeground(new java.awt.Color(0, 204, 153));
+        LabelN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelN.setText("N");
+        LabelN.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        LabelN.setOpaque(true);
+        jPanel3.add(LabelN);
+
+        LabelG.setBackground(new java.awt.Color(51, 51, 51));
+        LabelG.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        LabelG.setForeground(new java.awt.Color(51, 153, 255));
+        LabelG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelG.setText("G");
+        LabelG.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        LabelG.setOpaque(true);
+        jPanel3.add(LabelG);
+
+        LabelO.setBackground(new java.awt.Color(51, 51, 51));
+        LabelO.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        LabelO.setForeground(new java.awt.Color(153, 51, 255));
+        LabelO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelO.setText("O");
+        LabelO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        LabelO.setOpaque(true);
+        jPanel3.add(LabelO);
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         jPanel1.setLayout(new java.awt.GridLayout(5, 5));
 
-        lbl1.setBackground(new java.awt.Color(10, 14, 39));
-        lbl1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl1.setOpaque(true);
-        jPanel1.add(lbl1);
+        Label1.setBackground(java.awt.Color.black);
+        Label1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label1);
 
-        lbl2.setBackground(new java.awt.Color(10, 14, 39));
-        lbl2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl2.setOpaque(true);
-        jPanel1.add(lbl2);
+        Label2.setBackground(java.awt.Color.black);
+        Label2.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label2);
 
-        lbl3.setBackground(new java.awt.Color(10, 14, 39));
-        lbl3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl3.setOpaque(true);
-        jPanel1.add(lbl3);
+        Label3.setBackground(java.awt.Color.black);
+        Label3.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label3);
 
-        lbl4.setBackground(new java.awt.Color(10, 14, 39));
-        lbl4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl4.setOpaque(true);
-        jPanel1.add(lbl4);
+        Label4.setBackground(java.awt.Color.black);
+        Label4.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label4);
 
-        lbl5.setBackground(new java.awt.Color(10, 14, 39));
-        lbl5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl5.setOpaque(true);
-        jPanel1.add(lbl5);
+        Label5.setBackground(java.awt.Color.black);
+        Label5.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label5);
 
-        lbl6.setBackground(new java.awt.Color(10, 14, 39));
-        lbl6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl6.setOpaque(true);
-        jPanel1.add(lbl6);
+        Label6.setBackground(java.awt.Color.black);
+        Label6.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label6);
 
-        lbl7.setBackground(new java.awt.Color(10, 14, 39));
-        lbl7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl7.setOpaque(true);
-        jPanel1.add(lbl7);
+        Label7.setBackground(java.awt.Color.black);
+        Label7.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label7);
 
-        lbl8.setBackground(new java.awt.Color(10, 14, 39));
-        lbl8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl8.setOpaque(true);
-        jPanel1.add(lbl8);
+        Label8.setBackground(java.awt.Color.black);
+        Label8.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label8);
 
-        lbl9.setBackground(new java.awt.Color(10, 14, 39));
-        lbl9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl9.setOpaque(true);
-        jPanel1.add(lbl9);
+        Label9.setBackground(java.awt.Color.black);
+        Label9.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label9);
 
-        lbl10.setBackground(new java.awt.Color(10, 14, 39));
-        lbl10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl10.setOpaque(true);
-        jPanel1.add(lbl10);
+        Label10.setBackground(java.awt.Color.black);
+        Label10.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label10);
 
-        lbl11.setBackground(new java.awt.Color(10, 14, 39));
-        lbl11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl11.setOpaque(true);
-        jPanel1.add(lbl11);
+        Label11.setBackground(java.awt.Color.black);
+        Label11.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label11);
 
-        lbl12.setBackground(new java.awt.Color(10, 14, 39));
-        lbl12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl12.setOpaque(true);
-        jPanel1.add(lbl12);
+        Label12.setBackground(java.awt.Color.black);
+        Label12.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label12);
 
-        lblFree.setBackground(new java.awt.Color(10, 14, 39));
-        lblFree.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblFree.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblFree.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Free.png"))); // NOI18N
-        lblFree.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lblFree.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblFree.setOpaque(true);
-        jPanel1.add(lblFree);
+        Label13.setBackground(java.awt.Color.black);
+        Label13.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label13.setText("FREE");
+        Label13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label13);
 
-        lbl14.setBackground(new java.awt.Color(10, 14, 39));
-        lbl14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl14.setOpaque(true);
-        jPanel1.add(lbl14);
+        Label14.setBackground(java.awt.Color.black);
+        Label14.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label14);
 
-        lbl15.setBackground(new java.awt.Color(10, 14, 39));
-        lbl15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl15.setOpaque(true);
-        jPanel1.add(lbl15);
+        Label15.setBackground(java.awt.Color.black);
+        Label15.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label15.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label15);
 
-        lbl16.setBackground(new java.awt.Color(10, 14, 39));
-        lbl16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl16.setOpaque(true);
-        jPanel1.add(lbl16);
+        Label16.setBackground(java.awt.Color.black);
+        Label16.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label16.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label16);
 
-        lbl17.setBackground(new java.awt.Color(10, 14, 39));
-        lbl17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl17.setOpaque(true);
-        jPanel1.add(lbl17);
+        Label17.setBackground(java.awt.Color.black);
+        Label17.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label17.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label17);
 
-        lbl18.setBackground(new java.awt.Color(10, 14, 39));
-        lbl18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl18.setOpaque(true);
-        jPanel1.add(lbl18);
+        Label18.setBackground(java.awt.Color.black);
+        Label18.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label18.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label18);
 
-        lbl19.setBackground(new java.awt.Color(10, 14, 39));
-        lbl19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl19.setOpaque(true);
-        jPanel1.add(lbl19);
+        Label19.setBackground(java.awt.Color.black);
+        Label19.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label19.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label19);
 
-        lbl20.setBackground(new java.awt.Color(10, 14, 39));
-        lbl20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl20.setOpaque(true);
-        jPanel1.add(lbl20);
+        Label20.setBackground(java.awt.Color.black);
+        Label20.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label20.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label20);
 
-        lbl21.setBackground(new java.awt.Color(10, 14, 39));
-        lbl21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl21.setOpaque(true);
-        jPanel1.add(lbl21);
+        Label21.setBackground(java.awt.Color.black);
+        Label21.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label21.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label21);
 
-        lbl22.setBackground(new java.awt.Color(10, 14, 39));
-        lbl22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl22.setOpaque(true);
-        jPanel1.add(lbl22);
+        Label22.setBackground(java.awt.Color.black);
+        Label22.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label22.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label22);
 
-        lbl23.setBackground(new java.awt.Color(10, 14, 39));
-        lbl23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl23.setOpaque(true);
-        jPanel1.add(lbl23);
+        Label23.setBackground(java.awt.Color.black);
+        Label23.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label23.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label23);
 
-        lbl24.setBackground(new java.awt.Color(10, 14, 39));
-        lbl24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl24.setOpaque(true);
-        jPanel1.add(lbl24);
+        Label24.setBackground(java.awt.Color.black);
+        Label24.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label24.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label24);
 
-        lbl25.setBackground(new java.awt.Color(10, 14, 39));
-        lbl25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Cuadrito.png"))); // NOI18N
-        lbl25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 63, 81)));
-        lbl25.setOpaque(true);
-        jPanel1.add(lbl25);
+        Label25.setBackground(java.awt.Color.black);
+        Label25.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        Label25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        Label25.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(Label25);
 
-        jPanel3.setBackground(new java.awt.Color(10, 14, 39));
-
-        lblID.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblID.setForeground(new java.awt.Color(255, 255, 255));
-        lblID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblID.setText("ID:");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(lblID)
-                .addContainerGap(187, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(lblID)
-                .addGap(0, 12, Short.MAX_VALUE))
-        );
-
-        jPanel4.setBackground(new java.awt.Color(10, 14, 39));
-        jPanel4.setLayout(new java.awt.GridLayout(0, 5));
-
-        lblB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/B.png"))); // NOI18N
-        jPanel4.add(lblB);
-
-        lblI.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/I.png"))); // NOI18N
-        jPanel4.add(lblI);
-
-        lblN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/N.png"))); // NOI18N
-        jPanel4.add(lblN);
-
-        lblG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/G.png"))); // NOI18N
-        jPanel4.add(lblG);
-
-        lblO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/O.png"))); // NOI18N
-        jPanel4.add(lblO);
+        LabelID.setBackground(new java.awt.Color(102, 102, 102));
+        LabelID.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        LabelID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelID.setText("ID:");
+        LabelID.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(LabelID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelID, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Label1;
+    private javax.swing.JLabel Label10;
+    private javax.swing.JLabel Label11;
+    private javax.swing.JLabel Label12;
+    private javax.swing.JLabel Label13;
+    private javax.swing.JLabel Label14;
+    private javax.swing.JLabel Label15;
+    private javax.swing.JLabel Label16;
+    private javax.swing.JLabel Label17;
+    private javax.swing.JLabel Label18;
+    private javax.swing.JLabel Label19;
+    private javax.swing.JLabel Label2;
+    private javax.swing.JLabel Label20;
+    private javax.swing.JLabel Label21;
+    private javax.swing.JLabel Label22;
+    private javax.swing.JLabel Label23;
+    private javax.swing.JLabel Label24;
+    private javax.swing.JLabel Label25;
+    private javax.swing.JLabel Label3;
+    private javax.swing.JLabel Label4;
+    private javax.swing.JLabel Label5;
+    private javax.swing.JLabel Label6;
+    private javax.swing.JLabel Label7;
+    private javax.swing.JLabel Label8;
+    private javax.swing.JLabel Label9;
+    private javax.swing.JLabel LabelB;
+    private javax.swing.JLabel LabelG;
+    private javax.swing.JLabel LabelI;
+    private javax.swing.JLabel LabelID;
+    private javax.swing.JLabel LabelN;
+    private javax.swing.JLabel LabelO;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JLabel lbl1;
-    private javax.swing.JLabel lbl10;
-    private javax.swing.JLabel lbl11;
-    private javax.swing.JLabel lbl12;
-    private javax.swing.JLabel lbl14;
-    private javax.swing.JLabel lbl15;
-    private javax.swing.JLabel lbl16;
-    private javax.swing.JLabel lbl17;
-    private javax.swing.JLabel lbl18;
-    private javax.swing.JLabel lbl19;
-    private javax.swing.JLabel lbl2;
-    private javax.swing.JLabel lbl20;
-    private javax.swing.JLabel lbl21;
-    private javax.swing.JLabel lbl22;
-    private javax.swing.JLabel lbl23;
-    private javax.swing.JLabel lbl24;
-    private javax.swing.JLabel lbl25;
-    private javax.swing.JLabel lbl3;
-    private javax.swing.JLabel lbl4;
-    private javax.swing.JLabel lbl5;
-    private javax.swing.JLabel lbl6;
-    private javax.swing.JLabel lbl7;
-    private javax.swing.JLabel lbl8;
-    private javax.swing.JLabel lbl9;
-    private javax.swing.JLabel lblB;
-    private javax.swing.JLabel lblFree;
-    private javax.swing.JLabel lblG;
-    private javax.swing.JLabel lblI;
-    private javax.swing.JLabel lblID;
-    private javax.swing.JLabel lblN;
-    private javax.swing.JLabel lblO;
     // End of variables declaration//GEN-END:variables
 }

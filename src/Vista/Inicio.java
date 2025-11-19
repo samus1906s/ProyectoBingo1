@@ -22,8 +22,8 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
-        btnAutomatico.setSelected(true);
-        btnAutomatico2.setSelected(true);
+        btnLlenadoAutomatico.setSelected(true);
+        btnMarcadoAutomatico.setSelected(true);
         btnNormal.setSelected(true);
     }
 
@@ -36,19 +36,21 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoLlenado = new javax.swing.ButtonGroup();
+        grupoMarcado = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         lblIcon = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblIcon2 = new javax.swing.JLabel();
         lblLlenado = new javax.swing.JLabel();
-        btnAutomatico = new javax.swing.JButton();
-        btnManual = new javax.swing.JButton();
+        btnLlenadoAutomatico = new javax.swing.JRadioButton();
+        btnLlenadoManual = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         lblIcon3 = new javax.swing.JLabel();
-        btnAutomatico2 = new javax.swing.JButton();
-        btnManual2 = new javax.swing.JButton();
         lblMarcado = new javax.swing.JLabel();
+        btnMarcadoAutomatico = new javax.swing.JRadioButton();
+        btnMarcadoManual = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         lblIcon4 = new javax.swing.JLabel();
         lblModoJuego = new javax.swing.JLabel();
@@ -80,38 +82,38 @@ public class Inicio extends javax.swing.JFrame {
         lblLlenado.setForeground(new java.awt.Color(10, 14, 39));
         lblLlenado.setText("Modo de Llenado:");
 
-        btnAutomatico.setBackground(new java.awt.Color(44, 63, 81));
-        btnAutomatico.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnAutomatico.setForeground(new java.awt.Color(255, 255, 255));
-        btnAutomatico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/automatico.png"))); // NOI18N
-        btnAutomatico.addActionListener(new java.awt.event.ActionListener() {
+        grupoLlenado.add(btnLlenadoAutomatico);
+        btnLlenadoAutomatico.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnLlenadoAutomatico.setForeground(new java.awt.Color(10, 14, 39));
+        btnLlenadoAutomatico.setText("Automatico");
+
+        grupoLlenado.add(btnLlenadoManual);
+        btnLlenadoManual.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnLlenadoManual.setForeground(new java.awt.Color(10, 14, 39));
+        btnLlenadoManual.setText("Manual");
+        btnLlenadoManual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAutomaticoActionPerformed(evt);
+                btnLlenadoManualActionPerformed(evt);
             }
         });
-
-        btnManual.setBackground(new java.awt.Color(44, 63, 81));
-        btnManual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnManual.setForeground(new java.awt.Color(255, 255, 255));
-        btnManual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/manual.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(lblIcon2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblLlenado)
-                        .addGap(327, 327, 327))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblLlenado))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnAutomatico, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnManual, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42))))
+                        .addGap(39, 39, 39)
+                        .addComponent(btnLlenadoAutomatico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(56, 56, 56)
+                .addComponent(btnLlenadoManual)
+                .addGap(161, 161, 161))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,11 +124,11 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(lblIcon2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(lblLlenado, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnManual, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnAutomatico, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblLlenado, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnLlenadoAutomatico)
+                            .addComponent(btnLlenadoManual))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -134,58 +136,53 @@ public class Inicio extends javax.swing.JFrame {
 
         lblIcon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Lapiz.png"))); // NOI18N
 
-        btnAutomatico2.setBackground(new java.awt.Color(44, 63, 81));
-        btnAutomatico2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnAutomatico2.setForeground(new java.awt.Color(255, 255, 255));
-        btnAutomatico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/automatico.png"))); // NOI18N
-        btnAutomatico2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAutomatico2ActionPerformed(evt);
-            }
-        });
-
-        btnManual2.setBackground(new java.awt.Color(44, 63, 81));
-        btnManual2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnManual2.setForeground(new java.awt.Color(255, 255, 255));
-        btnManual2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/manual.png"))); // NOI18N
-
         lblMarcado.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblMarcado.setForeground(new java.awt.Color(10, 14, 39));
         lblMarcado.setText("Modo de Marcado:");
+
+        grupoMarcado.add(btnMarcadoAutomatico);
+        btnMarcadoAutomatico.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnMarcadoAutomatico.setForeground(new java.awt.Color(10, 14, 39));
+        btnMarcadoAutomatico.setText("Automatico");
+
+        grupoMarcado.add(btnMarcadoManual);
+        btnMarcadoManual.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnMarcadoManual.setForeground(new java.awt.Color(10, 14, 39));
+        btnMarcadoManual.setText("Manual");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(lblIcon3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblMarcado)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(lblIcon3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblMarcado)
+                        .addGap(87, 87, 87))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnMarcadoAutomatico, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79)))
+                .addComponent(btnMarcadoManual)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAutomatico2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addComponent(btnManual2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(lblIcon3)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblMarcado, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)))
+                .addGap(19, 19, 19)
+                .addComponent(lblIcon3)
+                .addGap(98, 98, 98))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblMarcado, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAutomatico2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnManual2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13))
+                    .addComponent(btnMarcadoAutomatico)
+                    .addComponent(btnMarcadoManual))
+                .addGap(51, 51, 51))
         );
 
         jPanel4.setBackground(new java.awt.Color(44, 63, 81));
@@ -211,17 +208,14 @@ public class Inicio extends javax.swing.JFrame {
         btnLleno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Lleno.jpg"))); // NOI18N
 
         lblNormal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblNormal.setForeground(new java.awt.Color(10, 14, 39));
         lblNormal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Normal (2).png"))); // NOI18N
 
         lblCuatroEsquinas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblCuatroEsquinas.setForeground(new java.awt.Color(10, 14, 39));
         lblCuatroEsquinas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCuatroEsquinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/CuatroEsquinas (2).png"))); // NOI18N
 
         lblLleno.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblLleno.setForeground(new java.awt.Color(10, 14, 39));
         lblLleno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLleno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Lleno.png"))); // NOI18N
 
@@ -309,10 +303,10 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(lblTitulo)
                         .addGap(0, 199, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(212, 212, 212)
                 .addComponent(btnIniciarJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(220, 220, 220))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,8 +317,8 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(lblTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -347,13 +341,13 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void btnIniciarJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarJuegoActionPerformed
-       if (!btnAutomatico.isSelected() && !btnManual.isSelected()) {
+       if (!btnLlenadoAutomatico.isSelected() && !btnLlenadoManual.isSelected()) {
         JOptionPane.showMessageDialog(this, 
             "Debe seleccionar un Modo de Llenado.");
         return;
     }
 
-    if (!btnAutomatico2.isSelected() && !btnManual2.isSelected()) {
+    if (!btnMarcadoAutomatico.isSelected() && !btnMarcadoManual.isSelected()) {
         JOptionPane.showMessageDialog(this, 
             "Debe seleccionar un Modo de Marcado.");
         return;
@@ -366,8 +360,8 @@ public class Inicio extends javax.swing.JFrame {
         return;
     }
 
-    boolean llenadoAuto = btnAutomatico.isSelected();
-    boolean marcadoAuto = btnAutomatico2.isSelected();
+    boolean llenadoAuto = btnLlenadoAutomatico.isSelected();
+    boolean marcadoAuto = btnMarcadoAutomatico.isSelected();
 
     ModoJuego modo;
     if (btnCuatroEsquinas.isSelected()) {
@@ -389,17 +383,13 @@ public class Inicio extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_btnIniciarJuegoActionPerformed
 
-    private void btnAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutomaticoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAutomaticoActionPerformed
-
-    private void btnAutomatico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutomatico2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAutomatico2ActionPerformed
-
     private void btnNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNormalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNormalActionPerformed
+
+    private void btnLlenadoManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLlenadoManualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLlenadoManualActionPerformed
 
     /**
      * @param args the command line arguments
@@ -431,14 +421,16 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAutomatico;
-    private javax.swing.JButton btnAutomatico2;
     private javax.swing.JButton btnCuatroEsquinas;
     private javax.swing.JButton btnIniciarJuego;
+    private javax.swing.JRadioButton btnLlenadoAutomatico;
+    private javax.swing.JRadioButton btnLlenadoManual;
     private javax.swing.JButton btnLleno;
-    private javax.swing.JButton btnManual;
-    private javax.swing.JButton btnManual2;
+    private javax.swing.JRadioButton btnMarcadoAutomatico;
+    private javax.swing.JRadioButton btnMarcadoManual;
     private javax.swing.JButton btnNormal;
+    private javax.swing.ButtonGroup grupoLlenado;
+    private javax.swing.ButtonGroup grupoMarcado;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
