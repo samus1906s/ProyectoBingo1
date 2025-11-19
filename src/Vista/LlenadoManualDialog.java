@@ -4,22 +4,12 @@
  */
 package Vista;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Frame;
-import java.awt.GridLayout;
+
 import java.util.HashSet;
 import java.util.Set;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import Modelo.Carton;
 import Controlador.JuegoControlador;
-import Utilidades.Validaciones;
 
 /**
  *
