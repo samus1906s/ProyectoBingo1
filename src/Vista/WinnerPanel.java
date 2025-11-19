@@ -5,16 +5,17 @@
 package Vista;
 
 import Modelo.Carton;
-import Modelo.WrapLayout;
+
 import Vista.PanelGanadorGUI;
 import java.awt.Dimension;
 import java.awt.Frame;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-//import Controlador.JuegoController;
+import Controlador.JuegoControlador;
+import Vista.PanelCartonesGUI;
 
 /**
  *
- * @author Student
+ * @author Reynold
  */
 public class WinnerPanel extends javax.swing.JDialog {
 
@@ -26,18 +27,18 @@ public class WinnerPanel extends javax.swing.JDialog {
         initComponents();
     }
     
-   /* public WinnerPanel(Frame parent, Carton ganador, JuegoController controller){
+    public WinnerPanel(Frame parent, Carton ganador, JuegoControlador controlador){
         setTitle("Ganador del Bingo");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         PanelGanadorGUI ui = new PanelGanadorGUI();
         ui.setTitulo("Cartón ganador: " + ganador.getId());
 
-        PanelCartonUI panelCarton = new PanelCartonUI();
+        CartonGUI panelCarton = new CartonGUI();
         panelCarton.setModoManual(false);
         panelCarton.mostrarCarton(ganador);
 
-        var linea=controller.obtenerLineaGanadora(ganador);
+        var linea=controlador.obtenerLineaGanadora(ganador);
         if (linea != null) {
             panelCarton.setCasillasResaltadas(linea);
         }
