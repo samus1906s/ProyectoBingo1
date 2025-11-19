@@ -33,13 +33,18 @@ public class JuegoGUI extends javax.swing.JFrame {
     setLocationRelativeTo(null);
     
     panelMenu.setLayout(new BorderLayout());
-    PanelFondo fondoMenu = new PanelFondo("C:\\Users\\Valdelomaar\\Documents\\NetBeansProjects\\ProyectoBingo1\\src\\imagenes\\mesa_cafe.png");
+    PanelFondo fondoMenu = new PanelFondo("C:\\Users\\Valdelomaar\\Documents\\NetBeansProjects\\ProyectoBingo1\\src\\imagenes\\mesa_vertical.jpg");
      fondoMenu.setLayout(new BorderLayout());  
     panelMenu.add(fondoMenu, BorderLayout.CENTER);
 
+    
+   panelMenuArriba.setLayout(new BorderLayout());
+   PanelFondo fondoMenuArriba = new PanelFondo("C:\\Users\\Valdelomaar\\Documents\\NetBeansProjects\\ProyectoBingo1\\src\\imagenes\\mesa_cafe2.jpg");
+   panelMenuArriba.add(fondoMenuArriba, BorderLayout.CENTER);
+   fondoMenuArriba.setLayout(new BorderLayout());
    
-
-    PanelFondo fondo = new PanelFondo("C:\\Users\\Valdelomaar\\Documents\\NetBeansProjects\\ProyectoBingo1\\src\\imagenes\\mesa_cafe.png");
+   
+    PanelFondo fondo = new PanelFondo("C:\\Users\\Valdelomaar\\Documents\\NetBeansProjects\\ProyectoBingo1\\src\\imagenes\\mesa_negra.jpg");
     fondo.setLayout(new BorderLayout());
 
 
@@ -144,7 +149,7 @@ public class JuegoGUI extends javax.swing.JFrame {
         btnExtraerNumero.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         btnExtraerNumero.setForeground(new java.awt.Color(255, 255, 255));
         btnExtraerNumero.setText("Extraer Numero");
-        btnExtraerNumero.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(255, 204, 0)));
+        btnExtraerNumero.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
         btnExtraerNumero.setOpaque(true);
         btnExtraerNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,14 +161,14 @@ public class JuegoGUI extends javax.swing.JFrame {
         lblModoJuego.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         lblModoJuego.setForeground(new java.awt.Color(255, 255, 255));
         lblModoJuego.setText("Modo de juego: -");
-        lblModoJuego.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 0), 3));
+        lblModoJuego.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
         lblModoJuego.setOpaque(true);
 
         btnReiniciar.setBackground(new java.awt.Color(51, 51, 51));
         btnReiniciar.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         btnReiniciar.setForeground(new java.awt.Color(255, 255, 255));
         btnReiniciar.setText("Reiniciar Juego");
-        btnReiniciar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 0), 3));
+        btnReiniciar.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
         btnReiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReiniciarActionPerformed(evt);
@@ -174,7 +179,7 @@ public class JuegoGUI extends javax.swing.JFrame {
         btnVerificar.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         btnVerificar.setForeground(new java.awt.Color(255, 255, 255));
         btnVerificar.setText("Verificar Ganadores");
-        btnVerificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 0), 3));
+        btnVerificar.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
         btnVerificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVerificarActionPerformed(evt);
@@ -185,7 +190,7 @@ public class JuegoGUI extends javax.swing.JFrame {
         btnVolverMenu.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         btnVolverMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnVolverMenu.setText("Volver al Menu");
-        btnVolverMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 0), 3));
+        btnVolverMenu.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
         btnVolverMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverMenuActionPerformed(evt);
@@ -193,7 +198,7 @@ public class JuegoGUI extends javax.swing.JFrame {
         });
 
         panelSlot.setBackground(new java.awt.Color(51, 51, 51));
-        panelSlot.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 197, 66), 4));
+        panelSlot.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
 
         lblUltimoNumero.setBackground(new java.awt.Color(255, 255, 255));
         lblUltimoNumero.setForeground(new java.awt.Color(255, 255, 255));
@@ -275,17 +280,28 @@ public class JuegoGUI extends javax.swing.JFrame {
         panelMenuArriba.setForeground(new java.awt.Color(204, 204, 204));
         panelMenuArriba.setPreferredSize(new java.awt.Dimension(50, 65));
 
+        lblIdCarton.setBackground(new java.awt.Color(51, 51, 51));
+        lblIdCarton.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         lblIdCarton.setForeground(new java.awt.Color(255, 255, 255));
         lblIdCarton.setText("ID Cartón:");
+        lblIdCarton.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
 
+        btnCrearCarton.setBackground(new java.awt.Color(51, 51, 51));
+        btnCrearCarton.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        btnCrearCarton.setForeground(new java.awt.Color(255, 255, 255));
         btnCrearCarton.setText("Crear Cartón");
+        btnCrearCarton.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
         btnCrearCarton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearCartonActionPerformed(evt);
             }
         });
 
+        btnLimpiarCartones.setBackground(new java.awt.Color(51, 51, 51));
+        btnLimpiarCartones.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        btnLimpiarCartones.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiarCartones.setText("Limpiar Cartones");
+        btnLimpiarCartones.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
         btnLimpiarCartones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpiarCartonesActionPerformed(evt);
@@ -293,17 +309,27 @@ public class JuegoGUI extends javax.swing.JFrame {
         });
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Eliminar ID");
+        jLabel1.setText("Eliminar ID:");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
 
+        btnEliminarUno.setBackground(new java.awt.Color(51, 51, 51));
+        btnEliminarUno.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        btnEliminarUno.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarUno.setText("Eliminar Uno");
+        btnEliminarUno.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
         btnEliminarUno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarUnoActionPerformed(evt);
             }
         });
 
+        btnEliminarTodos.setBackground(new java.awt.Color(51, 51, 51));
+        btnEliminarTodos.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        btnEliminarTodos.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarTodos.setText("Eliminar Todos");
+        btnEliminarTodos.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
         btnEliminarTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarTodosActionPerformed(evt);
@@ -340,7 +366,7 @@ public class JuegoGUI extends javax.swing.JFrame {
                 .addComponent(btnEliminarTodos)
                 .addGap(181, 181, 181)
                 .addComponent(lblEliminado)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         panelMenuArribaLayout.setVerticalGroup(
             panelMenuArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,7 +384,7 @@ public class JuegoGUI extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(lblCreado)
                     .addComponent(lblEliminado))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelMenuArriba, java.awt.BorderLayout.NORTH);
