@@ -1,7 +1,7 @@
 
 package Vista;
 
-import Controlador.JuegoController;
+import Controlador.JuegoControlador;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,7 +24,7 @@ import Vista.PanelGanadorGUI;
 
 public class JuegoGUI extends javax.swing.JFrame {
    
-     private JuegoController controller;
+     private JuegoControlador controller;
     private boolean llenadoAutomatico;
     private PanelCartones panelCartones;
     private TombolaGUI panelTombola;
@@ -32,7 +32,7 @@ public class JuegoGUI extends javax.swing.JFrame {
 
     private PanelEstadoGanadores panelEstadoGanadores;
     
-    public JuegoGUI(JuegoController controller,
+    public JuegoGUI(JuegoControlador controller,
                       boolean marcadoManual,
                       boolean llenadoAutomatico,
                       ModoJuego modoJuego) {

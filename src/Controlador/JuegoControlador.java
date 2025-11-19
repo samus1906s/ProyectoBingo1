@@ -16,11 +16,11 @@ import Modelo.ModoJuego;
  *
  * @author Valdelomaar
  */
-public class JuegoController {
+public class JuegoControlador {
     
     private final Juego juego;
 
-    public JuegoController(Juego juego) {
+    public JuegoControlador(Juego juego) {
         this.juego = juego;
     }
 
