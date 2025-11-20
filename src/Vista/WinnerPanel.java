@@ -19,40 +19,45 @@ import Vista.PanelCartonesGUI;
  */
 public class WinnerPanel extends javax.swing.JDialog {
 
-    /**
+  /**
      * Creates new form WinnerPanel
+     * @param parent
+     * @param modal
      */
     public WinnerPanel(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
     
-    public WinnerPanel(Frame parent, Carton ganador, JuegoControlador controlador){
-        setTitle("Ganador del Bingo");
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    public WinnerPanel(Frame parent, Carton ganador, JuegoControlador controlador) {
+    super(parent, true);
 
-        PanelGanadorGUI ui = new PanelGanadorGUI();
-        ui.setTitulo("Cartón ganador: " + ganador.getId());
 
-        CartonGUI panelCarton = new CartonGUI();
-        panelCarton.setModoManual(false);
-        panelCarton.mostrarCarton(ganador);
+    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        var linea=controlador.obtenerLineaGanadora(ganador);
-        if (linea != null) {
-            panelCarton.setCasillasResaltadas(linea);
-        }
+    PanelGanadorGUI ui = new PanelGanadorGUI();
 
-        ui.insertarCarton(panelCarton);
 
-        ui.getBotonOK().addActionListener(e -> dispose());
+    CartonGUI panelCarton = new CartonGUI();
+    panelCarton.mostrarCarton(ganador);
 
-        setContentPane(ui);
+    var linea = controlador.obtenerLineaGanadora(ganador);
+    if (linea != null) {
+        panelCarton.setCasillasResaltadas(linea);
+    }
 
-        pack();
-        setMinimumSize(new Dimension(500, 500));
-        setResizable(false);
-        setLocationRelativeTo(parent);    
+    ui.insertarCarton(panelCarton);
+
+    ui.getBotonOK().addActionListener(e -> dispose());
+
+    setContentPane(ui);
+
+    pack();
+
+    setResizable(false);
+    setLocationRelativeTo(parent);
+    
+    ui.iniciarAnimacionFelicidades();    
     }
 
     /**
