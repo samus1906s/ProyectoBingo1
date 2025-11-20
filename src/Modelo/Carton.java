@@ -28,16 +28,20 @@ public class Carton {
         return casillas;
     }
     
-    public void marcarNumero(int numero){
-        for (int i=0; i<5; i++) {
-            for (int a=0; a<5; a++) {
-                Casillas c = casillas[i][a];
-                if (!c.isDisponible()&& c.getValores()== numero) {
-                    c.marcar();
-                }
+    public boolean marcarNumero(int numero) {
+    boolean marcado = false;
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            Casillas c = casillas[i][j];
+            if (!c.isDisponible() && c.getValores() == numero) {
+                c.marcar();
+                marcado = true;
             }
         }
     }
+    return marcado;
+}
 
     public void limpiarMarcados(){
         for (int i=0; i <5; i++) {
@@ -58,3 +62,4 @@ public class Carton {
     }
 }
 }
+
