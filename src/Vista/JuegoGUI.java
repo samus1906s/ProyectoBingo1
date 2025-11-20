@@ -15,7 +15,7 @@ import javax.swing.text.DocumentFilter;
 
 public class JuegoGUI extends javax.swing.JFrame {
    
-    private JuegoControlador controlador;
+     private JuegoControlador controlador;
     private boolean llenadoAutomatico;  
     private PanelCartonesGUI panelCartones;
     private TombolaGUI panelTombola;
@@ -24,17 +24,14 @@ public class JuegoGUI extends javax.swing.JFrame {
     private boolean estadoParpadeo = false;
 
     
-    
     public JuegoGUI(JuegoControlador controller, boolean modoAutomatico, ModoJuego modoJuego) {
     initComponents();
-    
     this.llenadoAutomatico = modoAutomatico;
     this.controlador = controller;
-
     setLocationRelativeTo(null);
 
     PanelFondo fondo = new PanelFondo("src\\imagenes\\mesa_negra.jpg");
-    
+
     panelCartones = new PanelCartonesGUI(controller);
     panelCartones.setOpaque(false);
     fondo.add(panelCartones);
@@ -45,10 +42,8 @@ public class JuegoGUI extends javax.swing.JFrame {
     panelEstadoContainer.add(panelEstadoGanadores);
     panelEstadoGanadores.setEstadoGanador(false);
 
-    
     panelTombola = new TombolaGUI();
     panelTombolaContainer.add(panelTombola);
-
 
     DocumentFilter onlyNumbers = new DocumentFilter() {
         @Override
@@ -58,7 +53,6 @@ public class JuegoGUI extends javax.swing.JFrame {
                 super.insertString(fb, offset, string, attr);
             }
         }
-
         @Override
         public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs)
                 throws BadLocationException {
@@ -67,42 +61,32 @@ public class JuegoGUI extends javax.swing.JFrame {
             }
         }
     };
-
     ((AbstractDocument) txtIdCarton.getDocument()).setDocumentFilter(onlyNumbers);
     ((AbstractDocument) txtEliminarId.getDocument()).setDocumentFilter(onlyNumbers);
     ((AbstractDocument) labelNumeroManual.getDocument()).setDocumentFilter(onlyNumbers);
-
 
     String textoModo = switch (modoJuego) {
         case CUATROESQUINAS -> "Modo de juego: CUATRO ESQUINAS";
         case CARTONLLENO -> "Modo de juego: CARTÓN LLENO";
         default -> "Modo de juego: NORMAL";
-      };
+    };
     lblModoJuego.setText(textoModo);
 
     lblCreado.setVisible(false);
     lblUltimoNumero.setText("Último número: -");
 
-
     panelCampoManual.setVisible(!llenadoAutomatico);
+    btnMarcar.setVisible(!llenadoAutomatico);
 
-
-    panelMenu.revalidate();
-    panelMenu.repaint();
-    
     if (llenadoAutomatico) {
-        panelCampoManual.setVisible(false);
-            panelCampoManual.setPreferredSize(new Dimension(0, 0));
-                } else {
-                 panelCampoManual.setVisible(true);
-                        panelCampoManual.setPreferredSize(null);
-                }
+        panelCampoManual.setPreferredSize(new Dimension(0, 0));
+    } else {
+        panelCampoManual.setPreferredSize(null);
+    }
 
     panelMenu.revalidate();
     panelMenu.repaint();
-
-    
-}
+    }
     
     
     @SuppressWarnings("unchecked")
@@ -112,14 +96,15 @@ public class JuegoGUI extends javax.swing.JFrame {
         panelMenu = new javax.swing.JPanel();
         panelCampoManual = new javax.swing.JPanel();
         labelNumeroManual = new javax.swing.JTextField();
+        btnMarcar = new javax.swing.JButton();
         btnExtraerNumero = new javax.swing.JButton();
         panelSlot = new javax.swing.JPanel();
         lblUltimoNumero = new javax.swing.JLabel();
         btnVerificar = new javax.swing.JButton();
         btnReiniciar = new javax.swing.JButton();
-        lblModoJuego = new javax.swing.JLabel();
         panelEstadoContainer = new javax.swing.JPanel();
         btnVolverMenu = new javax.swing.JButton();
+        lblModoJuego = new javax.swing.JLabel();
         panelMenuArriba = new javax.swing.JPanel();
         lblIdCarton = new javax.swing.JLabel();
         txtIdCarton = new javax.swing.JTextField();
@@ -151,14 +136,8 @@ public class JuegoGUI extends javax.swing.JFrame {
         labelNumeroManual.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
         labelNumeroManual.setForeground(new java.awt.Color(255, 255, 255));
         labelNumeroManual.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        labelNumeroManual.setToolTipText("DEBE INGRESAR EL NUMERO A EXTRAER");
         labelNumeroManual.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
         labelNumeroManual.setPreferredSize(new java.awt.Dimension(200, 200));
-        labelNumeroManual.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                labelNumeroManualActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout panelCampoManualLayout = new javax.swing.GroupLayout(panelCampoManual);
         panelCampoManual.setLayout(panelCampoManualLayout);
@@ -173,10 +152,23 @@ public class JuegoGUI extends javax.swing.JFrame {
 
         panelMenu.add(panelCampoManual);
 
+        btnMarcar.setBackground(new java.awt.Color(51, 51, 51));
+        btnMarcar.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        btnMarcar.setForeground(new java.awt.Color(255, 255, 255));
+        btnMarcar.setText("MARCAR");
+        btnMarcar.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
+        btnMarcar.setPreferredSize(new java.awt.Dimension(245, 50));
+        btnMarcar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMarcarActionPerformed(evt);
+            }
+        });
+        panelMenu.add(btnMarcar);
+
         btnExtraerNumero.setBackground(new java.awt.Color(51, 51, 51));
         btnExtraerNumero.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         btnExtraerNumero.setForeground(new java.awt.Color(255, 255, 255));
-        btnExtraerNumero.setText("  EXTRAER NUMERO ");
+        btnExtraerNumero.setText("Extraer Numero");
         btnExtraerNumero.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
         btnExtraerNumero.setMaximumSize(new java.awt.Dimension(100, 30));
         btnExtraerNumero.setMinimumSize(new java.awt.Dimension(200, 50));
@@ -194,9 +186,7 @@ public class JuegoGUI extends javax.swing.JFrame {
         panelSlot.setPreferredSize(new java.awt.Dimension(245, 70));
 
         lblUltimoNumero.setBackground(new java.awt.Color(255, 255, 255));
-        lblUltimoNumero.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         lblUltimoNumero.setForeground(new java.awt.Color(255, 255, 255));
-        lblUltimoNumero.setText("ULTIMO NUMERO: -");
 
         javax.swing.GroupLayout panelSlotLayout = new javax.swing.GroupLayout(panelSlot);
         panelSlot.setLayout(panelSlotLayout);
@@ -205,14 +195,14 @@ public class JuegoGUI extends javax.swing.JFrame {
             .addGroup(panelSlotLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblUltimoNumero)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
         panelSlotLayout.setVerticalGroup(
             panelSlotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelSlotLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(lblUltimoNumero)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         panelMenu.add(panelSlot);
@@ -247,15 +237,6 @@ public class JuegoGUI extends javax.swing.JFrame {
         });
         panelMenu.add(btnReiniciar);
 
-        lblModoJuego.setBackground(new java.awt.Color(51, 51, 51));
-        lblModoJuego.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
-        lblModoJuego.setForeground(new java.awt.Color(255, 255, 255));
-        lblModoJuego.setText("Modo de juego: -");
-        lblModoJuego.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
-        lblModoJuego.setOpaque(true);
-        lblModoJuego.setPreferredSize(new java.awt.Dimension(245, 60));
-        panelMenu.add(lblModoJuego);
-
         panelEstadoContainer.setMaximumSize(new java.awt.Dimension(200, 80));
         panelEstadoContainer.setMinimumSize(new java.awt.Dimension(200, 80));
         panelEstadoContainer.setOpaque(false);
@@ -268,13 +249,22 @@ public class JuegoGUI extends javax.swing.JFrame {
         btnVolverMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnVolverMenu.setText("Volver al Menu");
         btnVolverMenu.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
-        btnVolverMenu.setPreferredSize(new java.awt.Dimension(245, 80));
+        btnVolverMenu.setPreferredSize(new java.awt.Dimension(245, 50));
         btnVolverMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverMenuActionPerformed(evt);
             }
         });
         panelMenu.add(btnVolverMenu);
+
+        lblModoJuego.setBackground(new java.awt.Color(51, 51, 51));
+        lblModoJuego.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        lblModoJuego.setForeground(new java.awt.Color(255, 255, 255));
+        lblModoJuego.setText("Modalidad: -");
+        lblModoJuego.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(153, 0, 153)));
+        lblModoJuego.setOpaque(true);
+        lblModoJuego.setPreferredSize(new java.awt.Dimension(245, 60));
+        panelMenu.add(lblModoJuego);
 
         getContentPane().add(panelMenu, java.awt.BorderLayout.WEST);
 
@@ -369,7 +359,7 @@ public class JuegoGUI extends javax.swing.JFrame {
                 .addComponent(btnEliminarTodos)
                 .addGap(181, 181, 181)
                 .addComponent(lblEliminado)
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         panelMenuArribaLayout.setVerticalGroup(
             panelMenuArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -405,7 +395,18 @@ public class JuegoGUI extends javax.swing.JFrame {
         panelCartonesContainer.setBackground(new java.awt.Color(51, 51, 51));
         panelCartonesContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 0), 5));
         panelCartonesContainer.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelCartonesContainer.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout panelCartonesContainerLayout = new javax.swing.GroupLayout(panelCartonesContainer);
+        panelCartonesContainer.setLayout(panelCartonesContainerLayout);
+        panelCartonesContainerLayout.setHorizontalGroup(
+            panelCartonesContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 935, Short.MAX_VALUE)
+        );
+        panelCartonesContainerLayout.setVerticalGroup(
+            panelCartonesContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 812, Short.MAX_VALUE)
+        );
+
         scrollCartones.setViewportView(panelCartonesContainer);
 
         getContentPane().add(scrollCartones, java.awt.BorderLayout.CENTER);
@@ -452,69 +453,35 @@ public class JuegoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverMenuActionPerformed
 
     private void btnExtraerNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExtraerNumeroActionPerformed
-           if (controlador.getCartones().isEmpty()) {
-            JOptionPane.showMessageDialog(
-                this,
-                "Debe crear al menos un cartón antes de extraer números."
-            );
-            return;
-        }
-
-        int numero;
-
-        if (llenadoAutomatico) {
-
-            numero = controlador.extraerSiguienteNumero();
-            if (numero == -1) {
-                JOptionPane.showMessageDialog(this, "No hay más números disponibles.");
-                return;
-            }
-
-        } else {
-
-            String txt = labelNumeroManual.getText().trim();
-            if (txt.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Ingrese un número para extraer.");
-                return;
-            }
-
-            try {
-                numero = Integer.parseInt(txt);
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "Ingrese un número válido.");
-                return;
-            }
-
-            int resultado = controlador.procesarNumeroManual(numero);
-
-            if (resultado == -1) {
-                JOptionPane.showMessageDialog(this, "Número fuera de rango. Debe estar entre 1 y 75.");
-                return;
-            } else if (resultado == -2) {
-                JOptionPane.showMessageDialog(this, "Ese número ya fue extraído anteriormente.");
-                return;
-            }
+     if (controlador.getCartones().isEmpty()) {
+        JOptionPane.showMessageDialog(this,
+            "Debe crear al menos un cartón antes de extraer números.");
+        return;
+    }
 
 
-            numero = resultado;
-            labelNumeroManual.setText("");
-        }
+    int numero = controlador.extraerSiguienteNumero();
+
+    if (numero == -1) {
+        JOptionPane.showMessageDialog(this, "No hay más números disponibles.");
+        return;
+    }
 
 
-        lblUltimoNumero.setText("Último número: " + numero);
-        panelTombola.agregarNumero(numero);
-        panelCartones.refrescarCartones();
+    lblUltimoNumero.setText("Último número: " + numero);
+    panelTombola.agregarNumero(numero);
+    panelCartones.refrescarCartones();
 
-        var ganadores = controlador.obtenerGanadores();
-        if (ganadores.isEmpty()) {
-            panelEstadoGanadores.setEstadoGanador(false);
-            btnExtraerNumero.setEnabled(true);
-            detenerParpadeoVerificar();
-        } else {
-            panelEstadoGanadores.setEstadoGanador(true);
-            btnExtraerNumero.setEnabled(false);
-            iniciarParpadeoVerificar();
-        }
+    var ganadores = controlador.obtenerGanadores();
+
+    if (ganadores.isEmpty()) {
+        panelEstadoGanadores.setEstadoGanador(false);
+        btnExtraerNumero.setEnabled(true);
+    } else {
+        panelEstadoGanadores.setEstadoGanador(true);
+        btnExtraerNumero.setEnabled(false);
+        iniciarParpadeoVerificar();
+    }
     }//GEN-LAST:event_btnExtraerNumeroActionPerformed
 
     private void btnEliminarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTodosActionPerformed
@@ -565,45 +532,89 @@ public class JuegoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarCartonesActionPerformed
 
     private void btnCrearCartonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCartonActionPerformed
-         String id = txtIdCarton.getText().trim();
-        if (id.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese un ID válido.");
+       
+    String id = txtIdCarton.getText().trim();
+
+    if (id.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Ingrese un ID válido.");
+        return;
+    }
+
+    boolean creado = false;
+
+    if (llenadoAutomatico) {
+
+        Carton c = controlador.crearCartonAutomatico(id);
+
+        if (c == null) {
+            JOptionPane.showMessageDialog(this,
+                "Ya existe un cartón con ese ID.");
             return;
         }
 
-        boolean creado = false;
+        creado = true;
 
-        if (llenadoAutomatico) {
+    } else {
 
-            Carton c = controlador.crearCartonAutomatico(id);
-            if (c == null) {
-                JOptionPane.showMessageDialog(this,
-                    "Ya existe un cartón con ese ID.");
-                return;
-            }
-            creado = true;
+        LlenadoManualDialog dlg = new LlenadoManualDialog(this, controlador, id);
+        dlg.setVisible(true);
 
-        } else {
+        if (!dlg.fueCreado()) return; 
+        creado = true;
+    }
 
-            LlenadoManualDialog dlg = new LlenadoManualDialog(this, controlador, id);
-            dlg.setVisible(true);
-            if (!dlg.fueCreado()) return;
-            creado = true;
-        }
+    if (creado) {
+        lblCreado.setText("✓");
+        lblCreado.setForeground(new java.awt.Color(0, 255, 0));
+        lblCreado.setVisible(true);
 
-        if (creado) {
-            lblCreado.setText("✓");
-            lblCreado.setForeground(new java.awt.Color(0, 255, 0));
-            lblCreado.setVisible(true);
-            new javax.swing.Timer(1500, e -> lblCreado.setVisible(false)).start();
-        }
+        new javax.swing.Timer(1500, e -> lblCreado.setVisible(false)).start();
+    }
 
-        panelCartones.refrescarCartones();
+    panelCartones.refrescarCartones();
+        
     }//GEN-LAST:event_btnCrearCartonActionPerformed
 
-    private void labelNumeroManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labelNumeroManualActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_labelNumeroManualActionPerformed
+    private void btnMarcarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMarcarActionPerformed
+         String txt = labelNumeroManual.getText().trim();
+    if (txt.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Ingrese un número para marcar.");
+        return;
+    }
+
+    int numero;
+
+    try {
+        numero = Integer.parseInt(txt);
+    } catch (NumberFormatException e){
+        JOptionPane.showMessageDialog(this, "Ingrese un número válido.");
+        return;
+    }
+
+
+    if (!controlador.numeroHaSalido(numero)) {
+        JOptionPane.showMessageDialog(this, 
+           "Ese número NO ha salido en la tómbola. No se puede marcar.");
+        return;
+    }
+
+
+    controlador.marcarNumeroEnCartones(numero);
+
+    panelCartones.refrescarCartones();
+    labelNumeroManual.setText("");
+
+    var ganadores = controlador.obtenerGanadores();
+
+    if (ganadores.isEmpty()) {
+        panelEstadoGanadores.setEstadoGanador(false);
+        btnExtraerNumero.setEnabled(true);
+    } else {
+        panelEstadoGanadores.setEstadoGanador(true);
+        btnExtraerNumero.setEnabled(false);
+        iniciarParpadeoVerificar();
+    }
+    }//GEN-LAST:event_btnMarcarActionPerformed
 
    private void iniciarParpadeoVerificar() {
     if (timerParpadeo != null && timerParpadeo.isRunning()) return;
@@ -656,6 +667,7 @@ public class JuegoGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarUno;
     private javax.swing.JButton btnExtraerNumero;
     private javax.swing.JButton btnLimpiarCartones;
+    private javax.swing.JButton btnMarcar;
     private javax.swing.JButton btnReiniciar;
     private javax.swing.JButton btnVerificar;
     private javax.swing.JButton btnVolverMenu;

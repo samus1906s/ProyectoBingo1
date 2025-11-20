@@ -18,15 +18,17 @@ import Modelo.ModoJuego;
  */
 public class JuegoControlador {
     
-    private final Juego juego;
+     private final Juego juego;
 
     public JuegoControlador(Juego juego) {
         this.juego = juego;
     }
 
+ 
     public void setModoJuego(ModoJuego modo) {
         juego.setModoJuego(modo);
     }
+
 
     public Carton crearCartonAutomatico(String id) {
         return juego.crearCartonAutomatico(id);
@@ -38,10 +40,6 @@ public class JuegoControlador {
 
     public List<Carton> getCartones() {
         return juego.getCartones();
-    }
-
-    public List<Point> obtenerLineaGanadora(Carton carton) {
-        return juego.obtenerLineaGanadora(carton);
     }
 
     public Carton buscarCartonPorId(String id) {
@@ -60,12 +58,16 @@ public class JuegoControlador {
         juego.limpiarCartones();
     }
 
+
+
+
     public int extraerSiguienteNumero() {
-        return juego.procesarSiguienteNumero();
+        return juego.procesarSiguienteNumero();   
     }
 
-    public int procesarNumeroManual(int numero) {
-        return juego.procesarNumeroManual(numero);
+    /** EXTRACCIÓN MANUAL (textfield) */
+    public int extraerNumeroManual(int numero) {
+        return juego.agregarNumeroManual(numero); 
     }
 
     public int getUltimoNumero() {
@@ -76,12 +78,27 @@ public class JuegoControlador {
         return juego.getHistorialTombola();
     }
 
-    public void reiniciarJuego() {
-        juego.reiniciarJuego();
-    }
+
+
+    public boolean marcarNumeroEnCartones(int numero) {
+    return juego.marcarCartones(numero); 
+}
+    
+    public boolean numeroHaSalido(int numero) {
+    return juego.getHistorialTombola().contains(numero);
+}
+    
 
     public List<Carton> obtenerGanadores() {
         return juego.obtenerGanadores();
     }
-    
+
+    public List<Point> obtenerLineaGanadora(Carton carton) {
+        return juego.obtenerLineaGanadora(carton);
+    }
+
+
+    public void reiniciarJuego() {
+        juego.reiniciarJuego();
+    }
 }

@@ -4,9 +4,6 @@
  */
 package Modelo;
 
-import static Modelo.ModoJuego.CARTONLLENO;
-import static Modelo.ModoJuego.CUATROESQUINAS;
-import static Modelo.ModoJuego.NORMAL;
 import Utilidades.Constantes;
 import Utilidades.Validaciones;
 import java.awt.Point;
@@ -44,6 +41,7 @@ public class Juego {
 
     public void setModoJuego(ModoJuego modo) {
         this.modoJuego = modo;
+
         switch (modo) {
             case NORMAL -> this.reglaVictoria = new ReglaNormal();
             case CUATROESQUINAS -> this.reglaVictoria = new ReglaCuatroEsquinas();
@@ -51,7 +49,7 @@ public class Juego {
         }
     }
 
-
+   
     public Carton crearCartonAutomatico(String id) {
         if (buscarCartonPorId(id) != null) return null;
 
@@ -64,7 +62,6 @@ public class Juego {
             for (int fila = 0; fila < 5; fila++) {
 
                 boolean libre = (fila == 2 && col == 2);
-
                 if (libre) {
                     casillas[fila][col] = new Casillas(0, true);
                     continue;
@@ -72,7 +69,7 @@ public class Juego {
 
                 int min, max;
                 switch (col) {
-                    case 0 -> { min = 1;  max = 15; }
+                    case 0 -> { min = 1; max = 15; }
                     case 1 -> { min = 16; max = 30; }
                     case 2 -> { min = 31; max = 45; }
                     case 3 -> { min = 46; max = 60; }
@@ -89,10 +86,11 @@ public class Juego {
             }
         }
 
-        Carton carton = new Carton(id, casillas);
-        cartones.add(carton);
-        return carton;
+        Carton c = new Carton(id, casillas);
+        cartones.add(c);
+        return c;
     }
+
 
     public Carton crearCartonManual(String id, int[][] numeros) {
         if (buscarCartonPorId(id) != null) return null;
@@ -109,14 +107,12 @@ public class Juego {
             }
         }
 
-        Carton carton = new Carton(id, casillas);
-        cartones.add(carton);
-        return carton;
+        Carton c = new Carton(id, casillas);
+        cartones.add(c);
+        return c;
     }
 
-    // --------------------------------------------------------------
-    //  GETTERS
-    // --------------------------------------------------------------
+
     public List<Carton> getCartones() {
         return Collections.unmodifiableList(cartones);
     }
@@ -138,38 +134,45 @@ public class Juego {
     }
 
 
-    private void marcarNumeroEnCartones(int numero) {
-        for (Carton c : cartones) {
-            c.marcarNumero(numero);
+       public boolean marcarCartones(int numero) {
+    boolean marcado = false;
+
+    for (Carton c : cartones) {
+        if (c.marcarNumero(numero)) {
+            marcado = true;
         }
     }
-
+    return marcado;
+}
+    
 
     public int procesarSiguienteNumero() {
 
-        int numero = tombola.extraerNumero();
-        if (numero <= 0) return -1; 
+    int numero = tombola.extraerNumero();
+    if (numero <= 0) return -1;
 
-        ultimoNumero = numero;
-        tablero.marcar(numero);
-        marcarNumeroEnCartones(numero);
-
-        return numero;
-    }
+    ultimoNumero = numero;
 
 
-    public int procesarNumeroManual(int numero) {
+    tablero.marcar(numero);
 
-        if (numero < 1 || numero > 75) return -1;
-        if (tablero.estaMarcado(numero)) return -2;
 
-        ultimoNumero = numero;
-        tablero.marcar(numero);
-        marcarNumeroEnCartones(numero);
+    return numero;
+}
 
-        return numero;
-    }
+    
+    public int agregarNumeroManual(int numero) {
 
+    if (numero < 1 || numero > 75) return -1;
+    if (tablero.estaMarcado(numero)) return -2;
+
+    tablero.marcar(numero);
+    tombola.agregarNumeroManual(numero); 
+    ultimoNumero = numero;
+
+    return numero;
+}
+    
 
     public int getUltimoNumero() {
         return ultimoNumero;
@@ -191,11 +194,13 @@ public class Juego {
     public List<Carton> obtenerGanadores() {
 
         List<Carton> ganadores = new ArrayList<>();
+
         if (reglaVictoria == null) return ganadores;
 
         for (Carton c : cartones) {
             if (reglaVictoria.esGanador(c)) ganadores.add(c);
         }
+
         return ganadores;
     }
 
@@ -203,8 +208,8 @@ public class Juego {
     public List<Point> obtenerLineaGanadora(Carton carton) {
 
         List<Point> pts = new ArrayList<>();
-
         Casillas[][] c = carton.getEspacios();
+
 
         if (modoJuego == ModoJuego.CUATROESQUINAS) {
             if (c[0][0].isMarcados() &&
@@ -223,7 +228,6 @@ public class Juego {
         if (modoJuego == ModoJuego.CARTONLLENO) {
 
             boolean lleno = true;
-
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 5; j++)
                     if (!c[i][j].isMarcados())
@@ -234,50 +238,60 @@ public class Juego {
                     for (int j = 0; j < 5; j++)
                         pts.add(new Point(i, j));
             }
-
             return pts;
         }
 
-        // Normal: filas, columnas, diagonales
+
+
         for (int fila = 0; fila < 5; fila++) {
             boolean ok = true;
+
             for (int col = 0; col < 5; col++) {
                 if (!c[fila][col].isMarcados()) ok = false;
             }
+
             if (ok) {
-                for (int col = 0; col < 5; col++) pts.add(new Point(fila, col));
+                for (int col = 0; col < 5; col++)
+                    pts.add(new Point(fila, col));
                 return pts;
             }
         }
+
 
         for (int col = 0; col < 5; col++) {
             boolean ok = true;
+
             for (int fila = 0; fila < 5; fila++) {
                 if (!c[fila][col].isMarcados()) ok = false;
             }
+
             if (ok) {
-                for (int fila = 0; fila < 5; fila++) pts.add(new Point(fila, col));
+                for (int fila = 0; fila < 5; fila++)
+                    pts.add(new Point(fila, col));
                 return pts;
             }
         }
 
-        boolean diag1 = true;
-        for (int i = 0; i < 5; i++) if (!c[i][i].isMarcados()) diag1 = false;
 
+        boolean diag1 = true;
+        for (int i = 0; i < 5; i++)
+            if (!c[i][i].isMarcados()) diag1 = false;
         if (diag1) {
-            for (int i = 0; i < 5; i++) pts.add(new Point(i, i));
+            for (int i = 0; i < 5; i++)
+                pts.add(new Point(i, i));
             return pts;
         }
 
-        boolean diag2 = true;
-        for (int i = 0; i < 5; i++) if (!c[i][4 - i].isMarcados()) diag2 = false;
 
+        boolean diag2 = true;
+        for (int i = 0; i < 5; i++)
+            if (!c[i][4 - i].isMarcados()) diag2 = false;
         if (diag2) {
-            for (int i = 0; i < 5; i++) pts.add(new Point(i, 4 - i));
+            for (int i = 0; i < 5; i++)
+                pts.add(new Point(i, 4 - i));
             return pts;
         }
 
         return pts;
     }
-    
 }
