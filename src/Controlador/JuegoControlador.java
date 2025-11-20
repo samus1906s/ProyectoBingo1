@@ -24,20 +24,10 @@ public class JuegoControlador {
         this.juego = juego;
     }
 
-   
     public void setModoJuego(ModoJuego modo) {
         juego.setModoJuego(modo);
     }
 
-    public void setMarcadoAutomatico(boolean automatico) {
-        juego.setMarcadoAutomatico(automatico);
-    }
-
-    public boolean isMarcadoAutomatico() {
-        return juego.isMarcadoAutomatico();
-    }
-
-   
     public Carton crearCartonAutomatico(String id) {
         return juego.crearCartonAutomatico(id);
     }
@@ -51,9 +41,9 @@ public class JuegoControlador {
     }
 
     public List<Point> obtenerLineaGanadora(Carton carton) {
-    return juego.obtenerLineaGanadora(carton);
-}
-    
+        return juego.obtenerLineaGanadora(carton);
+    }
+
     public Carton buscarCartonPorId(String id) {
         return juego.buscarCartonPorId(id);
     }
@@ -70,9 +60,12 @@ public class JuegoControlador {
         juego.limpiarCartones();
     }
 
-  
     public int extraerSiguienteNumero() {
         return juego.procesarSiguienteNumero();
+    }
+
+    public int procesarNumeroManual(int numero) {
+        return juego.procesarNumeroManual(numero);
     }
 
     public int getUltimoNumero() {
@@ -87,12 +80,6 @@ public class JuegoControlador {
         juego.reiniciarJuego();
     }
 
-   
-    public void marcarNumeroEnCarton(String idCarton, int numero) {
-        juego.marcarNumeroEnCarton(idCarton, numero);
-    }
-
-   
     public List<Carton> obtenerGanadores() {
         return juego.obtenerGanadores();
     }

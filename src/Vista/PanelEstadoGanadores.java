@@ -28,8 +28,7 @@ public class PanelEstadoGanadores extends javax.swing.JPanel {
 
     private void inicializarAnimaciones() {
     
-        setLayout(new BorderLayout());
-        setOpaque(false);  
+         
 
        
        
@@ -84,11 +83,12 @@ public class PanelEstadoGanadores extends javax.swing.JPanel {
         labelAnimacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         add(labelAnimacion, java.awt.BorderLayout.CENTER);
 
-        labelEstadoGanadores.setFont(new java.awt.Font("Impact", 0, 17)); // NOI18N
+        labelEstadoGanadores.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        labelEstadoGanadores.setForeground(new java.awt.Color(255, 255, 255));
         labelEstadoGanadores.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelEstadoGanadores.setText("No hay ganadores");
         labelEstadoGanadores.setPreferredSize(new java.awt.Dimension(300, 50));
-        add(labelEstadoGanadores, java.awt.BorderLayout.NORTH);
+        add(labelEstadoGanadores, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
 
