@@ -30,6 +30,9 @@ public class Juego {
 
     private int ultimoNumero;
 
+    // 🔥 NUEVO: modo automático/manual
+    private boolean modoAutomatico = false;
+
     public Juego() {
         this.cartones = new ArrayList<>();
         this.tablero = new Tablero();
@@ -38,10 +41,23 @@ public class Juego {
         setModoJuego(ModoJuego.NORMAL);
     }
 
+    // --------------------------------------------------------------
+    //  CONFIGURAR MODO AUTOMÁTICO
+    // --------------------------------------------------------------
 
+    public void setModoAutomatico(boolean automatico) {
+        this.modoAutomatico = automatico;
+    }
+
+    public boolean isModoAutomatico() {
+        return modoAutomatico;
+    }
+
+    // --------------------------------------------------------------
+    //  MODO DE JUEGO
+    // --------------------------------------------------------------
     public void setModoJuego(ModoJuego modo) {
         this.modoJuego = modo;
-
         switch (modo) {
             case NORMAL -> this.reglaVictoria = new ReglaNormal();
             case CUATROESQUINAS -> this.reglaVictoria = new ReglaCuatroEsquinas();
@@ -49,7 +65,9 @@ public class Juego {
         }
     }
 
-   
+    // --------------------------------------------------------------
+    //  CREACIÓN DE CARTONES
+    // --------------------------------------------------------------
     public Carton crearCartonAutomatico(String id) {
         if (buscarCartonPorId(id) != null) return null;
 
@@ -69,11 +87,26 @@ public class Juego {
 
                 int min, max;
                 switch (col) {
-                    case 0 -> { min = 1; max = 15; }
-                    case 1 -> { min = 16; max = 30; }
-                    case 2 -> { min = 31; max = 45; }
-                    case 3 -> { min = 46; max = 60; }
-                    default -> { min = 61; max = 75; }
+                    case 0 -> {
+                        min = 1;
+                        max = 15;
+                    }
+                    case 1 -> {
+                        min = 16;
+                        max = 30;
+                    }
+                    case 2 -> {
+                        min = 31;
+                        max = 45;
+                    }
+                    case 3 -> {
+                        min = 46;
+                        max = 60;
+                    }
+                    default -> {
+                        min = 61;
+                        max = 75;
+                    }
                 }
 
                 int numero;
@@ -90,7 +123,6 @@ public class Juego {
         cartones.add(c);
         return c;
     }
-
 
     public Carton crearCartonManual(String id, int[][] numeros) {
         if (buscarCartonPorId(id) != null) return null;
@@ -112,7 +144,9 @@ public class Juego {
         return c;
     }
 
-
+    // --------------------------------------------------------------
+    //  GETTERS / BUSCADORES
+    // --------------------------------------------------------------
     public List<Carton> getCartones() {
         return Collections.unmodifiableList(cartones);
     }
@@ -133,8 +167,41 @@ public class Juego {
         for (Carton c : cartones) c.limpiarMarcados();
     }
 
+    // --------------------------------------------------------------
+    //  MARCAR CARTONES
+    // --------------------------------------------------------------
+    public boolean marcarCartones(int numero) {
+        boolean marcado = false;
 
-       public boolean marcarCartones(int numero) {
+        for (Carton c : cartones) {
+            if (c.marcarNumero(numero)) {
+                marcado = true;
+            }
+        }
+        return marcado;
+    }
+
+    
+    
+    // --------------------------------------------------------------
+    //  TÓMBOLA — EXTRACCIÓN AUTOMÁTICA
+    // --------------------------------------------------------------
+    public int procesarSiguienteNumero() {
+    int numero = tombola.extraerNumero();
+    if (numero <= 0) return -1;
+
+    ultimoNumero = numero;
+
+    // Marca en la tómbola
+    tablero.marcar(numero);
+
+    // ✅ MARCAR AUTOMÁTICAMENTE LOS CARTONES
+    marcarNumeroCartones(numero);
+
+    return numero;
+}
+
+    public boolean marcarNumeroCartones(int numero) {
     boolean marcado = false;
 
     for (Carton c : cartones) {
@@ -142,38 +209,30 @@ public class Juego {
             marcado = true;
         }
     }
+
     return marcado;
 }
     
-
-    public int procesarSiguienteNumero() {
-
-    int numero = tombola.extraerNumero();
-    if (numero <= 0) return -1;
-
-    ultimoNumero = numero;
-
-
-    tablero.marcar(numero);
-
-
-    return numero;
-}
-
-    
+    // --------------------------------------------------------------
+    //  EXTRACCIÓN MANUAL (textfield)
+    // --------------------------------------------------------------
     public int agregarNumeroManual(int numero) {
 
-    if (numero < 1 || numero > 75) return -1;
-    if (tablero.estaMarcado(numero)) return -2;
+        if (numero < 1 || numero > 75) return -1;
+        if (tablero.estaMarcado(numero)) return -2;
 
-    tablero.marcar(numero);
-    tombola.agregarNumeroManual(numero); 
-    ultimoNumero = numero;
+        tablero.marcar(numero);
+        tombola.agregarNumeroManual(numero);
+        ultimoNumero = numero;
 
-    return numero;
-}
-    
+        // 🎯 EN MANUAL *NO* marca automáticamente
 
+        return numero;
+    }
+
+    // --------------------------------------------------------------
+    //  GETTERS
+    // --------------------------------------------------------------
     public int getUltimoNumero() {
         return ultimoNumero;
     }
@@ -182,7 +241,9 @@ public class Juego {
         return tombola.getHistorial();
     }
 
-
+    // --------------------------------------------------------------
+    //  REINICIO
+    // --------------------------------------------------------------
     public void reiniciarJuego() {
         tombola.reiniciar();
         tablero.reiniciar();
@@ -190,28 +251,33 @@ public class Juego {
         ultimoNumero = 0;
     }
 
-
+    // --------------------------------------------------------------
+    //  GANADORES
+    // --------------------------------------------------------------
     public List<Carton> obtenerGanadores() {
-
         List<Carton> ganadores = new ArrayList<>();
 
         if (reglaVictoria == null) return ganadores;
 
         for (Carton c : cartones) {
-            if (reglaVictoria.esGanador(c)) ganadores.add(c);
+            if (reglaVictoria.esGanador(c)) {
+                ganadores.add(c);
+            }
         }
-
         return ganadores;
     }
 
-
+    // --------------------------------------------------------------
+    //  LÍNEAS GANADORAS (SIN CAMBIOS)
+    // --------------------------------------------------------------
     public List<Point> obtenerLineaGanadora(Carton carton) {
 
         List<Point> pts = new ArrayList<>();
         Casillas[][] c = carton.getEspacios();
 
-
+        // CUATRO ESQUINAS
         if (modoJuego == ModoJuego.CUATROESQUINAS) {
+
             if (c[0][0].isMarcados() &&
                 c[0][4].isMarcados() &&
                 c[4][0].isMarcados() &&
@@ -222,12 +288,15 @@ public class Juego {
                 pts.add(new Point(4, 0));
                 pts.add(new Point(4, 4));
             }
+
             return pts;
         }
 
+        // CARTÓN LLENO
         if (modoJuego == ModoJuego.CARTONLLENO) {
 
             boolean lleno = true;
+
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 5; j++)
                     if (!c[i][j].isMarcados())
@@ -238,11 +307,11 @@ public class Juego {
                     for (int j = 0; j < 5; j++)
                         pts.add(new Point(i, j));
             }
+
             return pts;
         }
 
-
-
+        // NORMAL — FILAS
         for (int fila = 0; fila < 5; fila++) {
             boolean ok = true;
 
@@ -257,7 +326,7 @@ public class Juego {
             }
         }
 
-
+        // COLUMNAS
         for (int col = 0; col < 5; col++) {
             boolean ok = true;
 
@@ -272,20 +341,24 @@ public class Juego {
             }
         }
 
-
+        // DIAG 1
         boolean diag1 = true;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++) {
             if (!c[i][i].isMarcados()) diag1 = false;
+        }
+
         if (diag1) {
             for (int i = 0; i < 5; i++)
                 pts.add(new Point(i, i));
             return pts;
         }
 
-
+        // DIAG 2
         boolean diag2 = true;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++) {
             if (!c[i][4 - i].isMarcados()) diag2 = false;
+        }
+
         if (diag2) {
             for (int i = 0; i < 5; i++)
                 pts.add(new Point(i, 4 - i));
