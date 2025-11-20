@@ -14,79 +14,87 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 
 public class JuegoGUI extends javax.swing.JFrame {
-   
+   private boolean llenadoAutomatico;
      private JuegoControlador controlador;
-    private boolean llenadoAutomatico;  
+
     private PanelCartonesGUI panelCartones;
     private TombolaGUI panelTombola;
     private PanelEstadoGanadores panelEstadoGanadores;
     private Timer timerParpadeo;
     private boolean estadoParpadeo = false;
 
-    
     public JuegoGUI(JuegoControlador controller, boolean modoAutomatico, ModoJuego modoJuego) {
-    initComponents();
-    this.llenadoAutomatico = modoAutomatico;
-    this.controlador = controller;
-    setLocationRelativeTo(null);
+        initComponents();
+        this.controlador = controller;
+        this.llenadoAutomatico = modoAutomatico;
+        this.llenadoAutomatico = modoAutomatico;
+        setLocationRelativeTo(null);
 
-    PanelFondo fondo = new PanelFondo("src\\imagenes\\mesa_negra.jpg");
 
-    panelCartones = new PanelCartonesGUI(controller);
-    panelCartones.setOpaque(false);
-    fondo.add(panelCartones);
-    scrollCartones.setViewportView(fondo);
-    panelCartones.refrescarCartones();
+        PanelFondo fondo = new PanelFondo("src\\imagenes\\mesa_negra.jpg");
 
-    panelEstadoGanadores = new PanelEstadoGanadores();
-    panelEstadoContainer.add(panelEstadoGanadores);
-    panelEstadoGanadores.setEstadoGanador(false);
+        panelCartones = new PanelCartonesGUI(controlador);
+        panelCartones.setOpaque(false);
+        fondo.add(panelCartones);
+        scrollCartones.setViewportView(fondo);
+        panelCartones.refrescarCartones();
 
-    panelTombola = new TombolaGUI();
-    panelTombolaContainer.add(panelTombola);
 
-    DocumentFilter onlyNumbers = new DocumentFilter() {
-        @Override
-        public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr)
-                throws BadLocationException {
-            if (string != null && string.matches("\\d+")) {
-                super.insertString(fb, offset, string, attr);
+        panelEstadoGanadores = new PanelEstadoGanadores();
+        panelEstadoContainer.add(panelEstadoGanadores);
+        panelEstadoGanadores.setEstadoGanador(false);
+
+
+        panelTombola = new TombolaGUI();
+        panelTombolaContainer.add(panelTombola);
+
+
+        DocumentFilter onlyNumbers = new DocumentFilter() {
+            @Override
+            public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr)
+                    throws BadLocationException {
+                if (string != null && string.matches("\\d+")) {
+                    super.insertString(fb, offset, string, attr);
+                }
             }
-        }
-        @Override
-        public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs)
-                throws BadLocationException {
-            if (text == null || text.isEmpty() || text.matches("\\d+")) {
-                super.replace(fb, offset, length, text, attrs);
+            @Override
+            public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs)
+                    throws BadLocationException {
+                if (text == null || text.isEmpty() || text.matches("\\d+")) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
             }
+        };
+        ((AbstractDocument) txtIdCarton.getDocument()).setDocumentFilter(onlyNumbers);
+        ((AbstractDocument) txtEliminarId.getDocument()).setDocumentFilter(onlyNumbers);
+        ((AbstractDocument) labelNumeroManual.getDocument()).setDocumentFilter(onlyNumbers);
+
+
+        String textoModo = switch (modoJuego) {
+            case CUATROESQUINAS -> "Modo de juego: CUATRO ESQUINAS";
+            case CARTONLLENO -> "Modo de juego: CARTÓN LLENO";
+            default -> "Modo de juego: NORMAL";
+        };
+        lblModoJuego.setText(textoModo);
+        lblCreado.setVisible(false);
+        lblUltimoNumero.setText("Último número: -");
+
+
+        panelCampoManual.setVisible(!llenadoAutomatico);
+        btnMarcar.setVisible(!llenadoAutomatico);
+
+        if (llenadoAutomatico) {
+            panelCampoManual.setPreferredSize(new Dimension(0, 0));
+        } else {
+            panelCampoManual.setPreferredSize(null);
         }
-    };
-    ((AbstractDocument) txtIdCarton.getDocument()).setDocumentFilter(onlyNumbers);
-    ((AbstractDocument) txtEliminarId.getDocument()).setDocumentFilter(onlyNumbers);
-    ((AbstractDocument) labelNumeroManual.getDocument()).setDocumentFilter(onlyNumbers);
 
-    String textoModo = switch (modoJuego) {
-        case CUATROESQUINAS -> "Modo de juego: CUATRO ESQUINAS";
-        case CARTONLLENO -> "Modo de juego: CARTÓN LLENO";
-        default -> "Modo de juego: NORMAL";
-    };
-    lblModoJuego.setText(textoModo);
-
-    lblCreado.setVisible(false);
-    lblUltimoNumero.setText("Último número: -");
-
-    panelCampoManual.setVisible(!llenadoAutomatico);
-    btnMarcar.setVisible(!llenadoAutomatico);
-
-    if (llenadoAutomatico) {
-        panelCampoManual.setPreferredSize(new Dimension(0, 0));
-    } else {
-        panelCampoManual.setPreferredSize(null);
+        panelMenu.revalidate();
+        panelMenu.repaint();
     }
 
-    panelMenu.revalidate();
-    panelMenu.repaint();
-    }
+    
+    
     
     
     @SuppressWarnings("unchecked")
@@ -453,15 +461,17 @@ public class JuegoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverMenuActionPerformed
 
     private void btnExtraerNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExtraerNumeroActionPerformed
-     if (controlador.getCartones().isEmpty()) {
-        JOptionPane.showMessageDialog(this,
-            "Debe crear al menos un cartón antes de extraer números.");
+
+    if (controlador.getCartones().isEmpty()) {
+        JOptionPane.showMessageDialog(
+            this,
+            "Debe crear al menos un cartón antes de extraer números."
+        );
         return;
     }
 
 
-    int numero = controlador.extraerSiguienteNumero();
-
+    int numero = controlador.extraerSiguienteNumero(llenadoAutomatico);
     if (numero == -1) {
         JOptionPane.showMessageDialog(this, "No hay más números disponibles.");
         return;
@@ -469,8 +479,19 @@ public class JuegoGUI extends javax.swing.JFrame {
 
 
     lblUltimoNumero.setText("Último número: " + numero);
+
+
     panelTombola.agregarNumero(numero);
+
+
+    if (llenadoAutomatico) {
+        controlador.marcarNumeroEnCartones(numero); 
+    }
+ 
+
+
     panelCartones.refrescarCartones();
+
 
     var ganadores = controlador.obtenerGanadores();
 
