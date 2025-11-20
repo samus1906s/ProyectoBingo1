@@ -4,6 +4,13 @@
  */
 package Vista;
 
+import Modelo.Animaciones;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Window;
+import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author Student
@@ -12,35 +19,45 @@ public class PanelGanadorGUI extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelGanadorGUI
-     */
+     */ 
+    private Animaciones animFelicidades;
+
+
     public PanelGanadorGUI() {
         initComponents();
+        animFelicidades = new Animaciones(labelFelicidades, 90,300,300);
     }
-    
-    public void setTitulo(String texto) {
-        lbTitulo.setText(texto);
+
+
+    public void iniciarAnimacionFelicidades() {
+        animFelicidades.start();
     }
+
+    public void detenerAnimacionFelicidades() {
+        animFelicidades.stop();
+    }
+
+
 
     public void insertarCarton(javax.swing.JPanel panel) {
         PanelSlot.removeAll();
 
-        
-        if (!(PanelSlot.getLayout() instanceof java.awt.BorderLayout)) {
-            PanelSlot.setLayout(new java.awt.BorderLayout());
+        if (!(PanelSlot.getLayout() instanceof BorderLayout)) {
+            PanelSlot.setLayout(new BorderLayout());
         }
-
-        PanelSlot.add(panel, java.awt.BorderLayout.CENTER);
+        
+        PanelSlot.add(panel);
         PanelSlot.revalidate();
         PanelSlot.repaint();
     }
-    
+
     public javax.swing.JButton getBotonOK() {
         return btnOK;
     }
+     
+    
 
-    public javax.swing.JPanel getPanelLuces() {
-        return PanelLuces;
-    }
+    
 
 
     /**
@@ -52,31 +69,16 @@ public class PanelGanadorGUI extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        PanelTitulo = new javax.swing.JPanel();
-        lbTitulo = new javax.swing.JLabel();
         PanelSlot = new javax.swing.JPanel();
-        PanelLuces = new javax.swing.JPanel();
         PanelBoton = new javax.swing.JPanel();
         btnOK = new javax.swing.JButton();
+        panelFelicidades = new javax.swing.JPanel();
+        labelFelicidades = new javax.swing.JLabel();
 
-        lbTitulo.setText("TITULO");
+        setBackground(new java.awt.Color(102, 102, 102));
 
-        javax.swing.GroupLayout PanelTituloLayout = new javax.swing.GroupLayout(PanelTitulo);
-        PanelTitulo.setLayout(PanelTituloLayout);
-        PanelTituloLayout.setHorizontalGroup(
-            PanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTituloLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbTitulo)
-                .addGap(167, 167, 167))
-        );
-        PanelTituloLayout.setVerticalGroup(
-            PanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTituloLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(lbTitulo)
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
+        PanelSlot.setBackground(new java.awt.Color(102, 102, 102));
+        PanelSlot.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout PanelSlotLayout = new javax.swing.GroupLayout(PanelSlot);
         PanelSlot.setLayout(PanelSlotLayout);
@@ -89,18 +91,13 @@ public class PanelGanadorGUI extends javax.swing.JPanel {
             .addGap(0, 347, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout PanelLucesLayout = new javax.swing.GroupLayout(PanelLuces);
-        PanelLuces.setLayout(PanelLucesLayout);
-        PanelLucesLayout.setHorizontalGroup(
-            PanelLucesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        PanelLucesLayout.setVerticalGroup(
-            PanelLucesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 55, Short.MAX_VALUE)
-        );
+        PanelBoton.setBackground(new java.awt.Color(102, 0, 153));
 
+        btnOK.setBackground(new java.awt.Color(51, 51, 51));
+        btnOK.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        btnOK.setForeground(new java.awt.Color(255, 255, 255));
         btnOK.setText("OK");
+        btnOK.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOKActionPerformed(evt);
@@ -111,9 +108,9 @@ public class PanelGanadorGUI extends javax.swing.JPanel {
         PanelBoton.setLayout(PanelBotonLayout);
         PanelBotonLayout.setHorizontalGroup(
             PanelBotonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBotonLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(PanelBotonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnOK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelBotonLayout.setVerticalGroup(
@@ -121,51 +118,56 @@ public class PanelGanadorGUI extends javax.swing.JPanel {
             .addGroup(PanelBotonLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        panelFelicidades.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
+        panelFelicidades.setMinimumSize(new java.awt.Dimension(400, 120));
+        panelFelicidades.setOpaque(false);
+        panelFelicidades.setPreferredSize(new java.awt.Dimension(400, 120));
+        panelFelicidades.setLayout(new java.awt.BorderLayout());
+
+        labelFelicidades.setBackground(new java.awt.Color(51, 51, 51));
+        labelFelicidades.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelFelicidades.setMinimumSize(new java.awt.Dimension(380, 110));
+        labelFelicidades.setPreferredSize(new java.awt.Dimension(380, 110));
+        panelFelicidades.add(labelFelicidades, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(PanelBoton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelSlot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(PanelSlot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelFelicidades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 121, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PanelLuces, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(123, 123, 123))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(panelFelicidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelSlot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelLuces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelBoton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(PanelBoton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
-        
+         
     }//GEN-LAST:event_btnOKActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelBoton;
-    private javax.swing.JPanel PanelLuces;
     private javax.swing.JPanel PanelSlot;
-    private javax.swing.JPanel PanelTitulo;
     private javax.swing.JButton btnOK;
-    private javax.swing.JLabel lbTitulo;
+    private javax.swing.JLabel labelFelicidades;
+    private javax.swing.JPanel panelFelicidades;
     // End of variables declaration//GEN-END:variables
 }
