@@ -58,7 +58,6 @@ public class TombolaGUI extends javax.swing.JPanel {
     lbl.setBackground(new Color(0, 170, 0));
     lbl.setForeground(Color.WHITE);
 
-    // Animación visual "pop"
     animacionNumeroPop(lbl);
 }
    
@@ -73,15 +72,13 @@ public void reiniciar() {
     private void animacionNumeroPop(JLabel lbl) {
         final int pasos = 8;
         final float tamañoBase = lbl.getFont().getSize2D();
-        final float incremento = 3f; // cuánto crece
-
+        final float incremento = 3f; 
         final int[] step = {0};
 
         Timer t = new Timer(35, e -> {
             step[0]++;
 
             float factor;
-            // primera mitad: crece, segunda: regresa al tamaño base
             if (step[0] <= pasos / 2) {
                 factor = 1f + (step[0] * (incremento / tamañoBase) / (pasos / 2));
             } else {
@@ -94,7 +91,6 @@ public void reiniciar() {
 
             if (step[0] >= pasos) {
                 ((Timer) e.getSource()).stop();
-                // aseguramos que vuelva al tamaño original exacto
                 lbl.setFont(f.deriveFont(tamañoBase));
             }
         });

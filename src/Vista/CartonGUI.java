@@ -18,11 +18,12 @@ import Modelo.Casillas;
  * @author Valdelomaar
  */
 public class CartonGUI extends javax.swing.JPanel {
-     private JLabel[][] labels;
+    
+    private final JLabel[][] labels;
     private Carton cartonActual;
     private List<Point> casillasResaltadas = new ArrayList<>();
     private boolean blinkState = true;
-    private boolean modoManual = false;
+
     private float fadeAlpha = 0f;
     private Timer fadeTimer;
 
@@ -30,48 +31,16 @@ public class CartonGUI extends javax.swing.JPanel {
     private boolean glowUp = true;
     private Timer glowTimer;
 
-    private float clickHighlightAlpha = 0f;
-    private Timer clickTimer;
-
     /**
      * Creates new form PanelCartonUI
      */
     public CartonGUI() {
         initComponents();
         labels = new JLabel[][]{ {Label1, Label2, Label3, Label4, Label5}, {Label6, Label7, Label8, Label9, Label10}, {Label11, Label12, Label13, Label14, Label15}, {Label16, Label17, Label18, Label19, Label20}, {Label21, Label22, Label23, Label24, Label25} };
-
+        
         for (int f = 0; f < 5; f++) {
             for (int c = 0; c < 5; c++) {
-                final int ff = f;
-                final int cc = c;
-
                 labels[f][c].setOpaque(true);
-                labels[f][c].addMouseListener(new java.awt.event.MouseAdapter() {
-    @Override
-    public void mouseClicked(java.awt.event.MouseEvent e) {
-        if (!modoManual) return;
-        if (cartonActual == null) return;
-
-        Casillas cs = cartonActual.getEspacios()[ff][cc];
-        if (cs.isDisponible()) return;
-
-        if (cs.isMarcados()) cs.desmarcar();
-        else cs.marcar();
-
-        mostrarCarton(cartonActual);
-         animacionClickSuave();
-
-        java.awt.Container parent = CartonGUI.this.getParent();
-        while (parent != null && !(parent instanceof JuegoGUI)) {
-            parent = parent.getParent();
-        }
-
-        if (parent instanceof JuegoGUI gw) {
-            gw.actualizarEstadoGanadores();
-        }
-    }
-                });
-                
             }
         }
     }
@@ -79,16 +48,12 @@ public class CartonGUI extends javax.swing.JPanel {
     public Carton getCartonActual() {
         return cartonActual;
     }
-    
-    public void setModoManual(boolean modo) {
-        this.modoManual = modo;
-    }
 
-     @Override
+    @Override
     protected void paintComponent(java.awt.Graphics g) {
         super.paintComponent(g);
-
         java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+
 
         if (fadeAlpha > 0f) {
             g2.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER, fadeAlpha));
@@ -96,48 +61,38 @@ public class CartonGUI extends javax.swing.JPanel {
             g2.fillRoundRect(0, 0, getWidth(), getHeight(), 25, 25);
         }
 
+
         if (glowLevel > 0f) {
             int alphaGlow = (int) (40 + glowLevel * 80);
             if (alphaGlow > 255) alphaGlow = 255;
 
             g2.setColor(new java.awt.Color(255, 215, 0, alphaGlow));
             int grosor = 6;
+
             for (int i = 0; i < 3; i++) {
-                g2.drawRoundRect( grosor / 2 + i, grosor / 2 + i, getWidth() - grosor - 2 * i, getHeight() - grosor - 2 * i, 30, 30 );
+                g2.drawRoundRect(
+                    grosor / 2 + i,
+                    grosor / 2 + i,
+                    getWidth() - grosor - 2 * i,
+                    getHeight() - grosor - 2 * i,
+                    30,
+                    30
+                );
             }
         }
 
         g2.dispose();
     }
     
-    private void animacionClickSuave() {
-        if (clickTimer != null && clickTimer.isRunning()) {
-            clickTimer.stop();
-        }
-
-        clickHighlightAlpha = 0.7f; 
-        clickTimer = new Timer(30, e -> {
-            clickHighlightAlpha -= 0.08f;
-            if (clickHighlightAlpha <= 0f) {
-                clickHighlightAlpha = 0f;
-                ((Timer) e.getSource()).stop();
-            }
-            repaint();
-        });
-        clickTimer.start();
-    }
-
     public void iniciarFadeGanador() {
-        if (fadeTimer != null && fadeTimer.isRunning()) {
-            fadeTimer.stop();
-        }
+        if (fadeTimer != null && fadeTimer.isRunning()) fadeTimer.stop();
 
         fadeAlpha = 0f;
-        fadeTimer = new javax.swing.Timer(30, e -> {
+        fadeTimer = new Timer(30, e -> {
             fadeAlpha += 0.05f;
             if (fadeAlpha >= 1f) {
                 fadeAlpha = 1f;
-                ((javax.swing.Timer) e.getSource()).stop();
+                ((Timer) e.getSource()).stop();
             }
             repaint();
         });
@@ -145,14 +100,12 @@ public class CartonGUI extends javax.swing.JPanel {
     }
 
     public void iniciarGlowGanador() {
-        if (glowTimer != null && glowTimer.isRunning()) {
-            glowTimer.stop();
-        }
+        if (glowTimer != null && glowTimer.isRunning()) glowTimer.stop();
 
         glowLevel = 0f;
         glowUp = true;
 
-        glowTimer = new javax.swing.Timer(40, e -> {
+        glowTimer = new Timer(40, e -> {
             if (glowUp) {
                 glowLevel += 0.05f;
                 if (glowLevel >= 1f) {
@@ -168,33 +121,33 @@ public class CartonGUI extends javax.swing.JPanel {
             }
             repaint();
         });
+
         glowTimer.start();
     }
 
     public void detenerGlowGanador() {
-        if (glowTimer != null && glowTimer.isRunning()) {
-            glowTimer.stop();
-        }
+        if (glowTimer != null && glowTimer.isRunning()) glowTimer.stop();
         glowLevel = 0f;
         repaint();
     }
     
     public void mostrarCarton(Carton carton) {
         this.cartonActual = carton;
-
         LabelID.setText("ID: " + carton.getId());
+
         Casillas[][] cs = carton.getEspacios();
 
         for (int f = 0; f < 5; f++) {
             for (int c = 0; c < 5; c++) {
+
                 JLabel lbl = labels[f][c];
                 Casillas cas = cs[f][c];
 
                 if (cas.isDisponible()) {
-                    lbl.setText("FREE");
                     lbl.setBackground(new Color(0, 120, 255));
                 } else {
                     lbl.setText(String.valueOf(cas.getValores()));
+
                     if (cas.isMarcados()) {
                         lbl.setBackground(new Color(0, 170, 0));
                     } else {
@@ -213,16 +166,14 @@ public class CartonGUI extends javax.swing.JPanel {
     }
 
     public void setCasillasResaltadas(List<Point> pts) {
-        this.casillasResaltadas = (pts != null) ? pts : new ArrayList<>();
+        casillasResaltadas = (pts != null) ? pts : new ArrayList<>();
         iniciarAnimacion();
     }
 
     private void iniciarAnimacion() {
         Timer t = new Timer(350, e -> {
             blinkState = !blinkState;
-            if (cartonActual != null) {
-                mostrarCarton(cartonActual);
-            }
+            if (cartonActual != null) mostrarCarton(cartonActual);
         });
         t.start();
     }

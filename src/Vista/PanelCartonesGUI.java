@@ -14,7 +14,6 @@ import Modelo.Carton;
 public class PanelCartonesGUI extends javax.swing.JPanel {
 
     private JuegoControlador controlador;
-    private boolean modoManual = false;
     
     /**
      * Creates new form PanelCartonesGUI
@@ -24,16 +23,11 @@ public class PanelCartonesGUI extends javax.swing.JPanel {
         setLayout(new GridLayout(0, 2, 10, 10));
     }
 
-     public void setModoMarcadoManual(boolean manual) {
-        this.modoManual = manual;
-    }
-
     public void refrescarCartones() {
         removeAll();
 
         for (Carton c : controlador.getCartones()) {
             CartonGUI cv = new CartonGUI();
-            cv.setModoManual(modoManual);
             cv.mostrarCarton(c);
             add(cv);
         }
