@@ -14,7 +14,7 @@ public class ReglaNormal implements ReglaVictoria{
     public boolean esGanador(Carton carton) {
          Casillas[][] c = carton.getEspacios();
 
-    //  Juego Horizontal 
+
     for (int fila = 0; fila < 5; fila++) {
         boolean completa = true;
         for (int col = 0; col < 5; col++) {
@@ -28,7 +28,7 @@ public class ReglaNormal implements ReglaVictoria{
             return true;
     }
 
-    //  Juego Vertical 
+
     for (int col = 0; col < 5; col++) {
         boolean completa = true;
         for (int fila = 0; fila < 5; fila++) {
@@ -42,7 +42,7 @@ public class ReglaNormal implements ReglaVictoria{
             return true;
     }
 
-    //  Juego Diagonal Primero   
+ 
     boolean diag1 = true;
     for (int i = 0; i < 5; i++) {
         if (!c[i][i].isMarcados()) {
@@ -54,7 +54,7 @@ public class ReglaNormal implements ReglaVictoria{
         
         return true;
 
-    //   Juego Diagonal Segundo 
+
     boolean diag2 = true;
     for (int i = 0; i < 5; i++) {
         if (!c[i][4 - i].isMarcados()) {

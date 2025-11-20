@@ -41,9 +41,7 @@ public class Juego {
         setModoJuego(ModoJuego.NORMAL);
     }
 
-    // --------------------------------------------------------------
-    //  MODO DE JUEGO (NO CAMBIA)
-    // --------------------------------------------------------------
+
     public void setModoJuego(ModoJuego modo) {
         this.modoJuego = modo;
         switch (modo) {
@@ -53,9 +51,7 @@ public class Juego {
         }
     }
 
-    // --------------------------------------------------------------
-    //  CREACIÓN DE CARTONES
-    // --------------------------------------------------------------
+
     public Carton crearCartonAutomatico(String id) {
         if (buscarCartonPorId(id) != null) return null;
 
@@ -141,22 +137,18 @@ public class Juego {
         for (Carton c : cartones) c.limpiarMarcados();
     }
 
-    // --------------------------------------------------------------
-    //  MARCADO AUTOMÁTICO (Siempre activo)
-    // --------------------------------------------------------------
+
     private void marcarNumeroEnCartones(int numero) {
         for (Carton c : cartones) {
             c.marcarNumero(numero);
         }
     }
 
-    // --------------------------------------------------------------
-    //  PROCESAR NÚMERO AUTOMÁTICO (Tómbola)
-    // --------------------------------------------------------------
+
     public int procesarSiguienteNumero() {
 
         int numero = tombola.extraerNumero();
-        if (numero <= 0) return -1; // si ya no hay números
+        if (numero <= 0) return -1; 
 
         ultimoNumero = numero;
         tablero.marcar(numero);
@@ -165,9 +157,7 @@ public class Juego {
         return numero;
     }
 
-    // --------------------------------------------------------------
-    //  PROCESAR NÚMERO MANUAL (JTextField)
-    // --------------------------------------------------------------
+
     public int procesarNumeroManual(int numero) {
 
         if (numero < 1 || numero > 75) return -1;
@@ -180,9 +170,7 @@ public class Juego {
         return numero;
     }
 
-    // --------------------------------------------------------------
-    //  GETTERS DEL JUEGO
-    // --------------------------------------------------------------
+
     public int getUltimoNumero() {
         return ultimoNumero;
     }
@@ -191,9 +179,7 @@ public class Juego {
         return tombola.getHistorial();
     }
 
-    // --------------------------------------------------------------
-    //  REINICIAR
-    // --------------------------------------------------------------
+
     public void reiniciarJuego() {
         tombola.reiniciar();
         tablero.reiniciar();
@@ -201,9 +187,7 @@ public class Juego {
         ultimoNumero = 0;
     }
 
-    // --------------------------------------------------------------
-    //  GANADORES
-    // --------------------------------------------------------------
+
     public List<Carton> obtenerGanadores() {
 
         List<Carton> ganadores = new ArrayList<>();
@@ -215,9 +199,7 @@ public class Juego {
         return ganadores;
     }
 
-    // --------------------------------------------------------------
-    //  LÍNEA GANADORA (sin cambios)
-    // --------------------------------------------------------------
+
     public List<Point> obtenerLineaGanadora(Carton carton) {
 
         List<Point> pts = new ArrayList<>();
