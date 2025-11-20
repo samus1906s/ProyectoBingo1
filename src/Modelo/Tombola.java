@@ -38,4 +38,15 @@ public class Tombola {
         historial.clear();
         generador.reinicio();
     }
+    
+    public void agregarNumeroManual(int numero) {
+
+        if (numero < 1 || numero > 75) return;
+
+        if (historial.contains(numero)) return;
+
+        historial.add(numero);
+
+    }
+    
 }

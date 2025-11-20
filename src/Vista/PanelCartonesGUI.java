@@ -12,15 +12,11 @@ import Modelo.Carton;
  * @author je110
  */
 public class PanelCartonesGUI extends javax.swing.JPanel {
-
     private JuegoControlador controlador;
-    
-    /**
-     * Creates new form PanelCartonesGUI
-     */
+
     public PanelCartonesGUI(JuegoControlador controlador) {
         this.controlador = controlador;
-        setLayout(new GridLayout(0, 2, 10, 10));
+        setLayout(new GridLayout(0, 3, 10, 10));
     }
 
     public void refrescarCartones() {
@@ -44,16 +40,7 @@ public class PanelCartonesGUI extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setLayout(new java.awt.GridLayout(1, 3, 10, 10));
     }// </editor-fold>//GEN-END:initComponents
 
 

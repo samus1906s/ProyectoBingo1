@@ -18,7 +18,7 @@ import Modelo.Casillas;
  * @author Valdelomaar
  */
 public class CartonGUI extends javax.swing.JPanel {
-    
+
     private final JLabel[][] labels;
     private Carton cartonActual;
     private List<Point> casillasResaltadas = new ArrayList<>();
@@ -31,13 +31,18 @@ public class CartonGUI extends javax.swing.JPanel {
     private boolean glowUp = true;
     private Timer glowTimer;
 
-    /**
-     * Creates new form PanelCartonUI
-     */
     public CartonGUI() {
         initComponents();
-        labels = new JLabel[][]{ {Label1, Label2, Label3, Label4, Label5}, {Label6, Label7, Label8, Label9, Label10}, {Label11, Label12, Label13, Label14, Label15}, {Label16, Label17, Label18, Label19, Label20}, {Label21, Label22, Label23, Label24, Label25} };
-        
+
+        labels = new JLabel[][]{
+            {Label1, Label2, Label3, Label4, Label5},
+            {Label6, Label7, Label8, Label9, Label10},
+            {Label11, Label12, Label13, Label14, Label15},
+            {Label16, Label17, Label18, Label19, Label20},
+            {Label21, Label22, Label23, Label24, Label25}
+        };
+
+
         for (int f = 0; f < 5; f++) {
             for (int c = 0; c < 5; c++) {
                 labels[f][c].setOpaque(true);
@@ -83,7 +88,7 @@ public class CartonGUI extends javax.swing.JPanel {
 
         g2.dispose();
     }
-    
+
     public void iniciarFadeGanador() {
         if (fadeTimer != null && fadeTimer.isRunning()) fadeTimer.stop();
 
@@ -130,40 +135,8 @@ public class CartonGUI extends javax.swing.JPanel {
         glowLevel = 0f;
         repaint();
     }
+
     
-    public void mostrarCarton(Carton carton) {
-        this.cartonActual = carton;
-        LabelID.setText("ID: " + carton.getId());
-
-        Casillas[][] cs = carton.getEspacios();
-
-        for (int f = 0; f < 5; f++) {
-            for (int c = 0; c < 5; c++) {
-
-                JLabel lbl = labels[f][c];
-                Casillas cas = cs[f][c];
-
-                if (cas.isDisponible()) {
-                    lbl.setBackground(new Color(0, 120, 255));
-                } else {
-                    lbl.setText(String.valueOf(cas.getValores()));
-
-                    if (cas.isMarcados()) {
-                        lbl.setBackground(new Color(0, 170, 0));
-                    } else {
-                        lbl.setBackground(new Color(45, 45, 45));
-                    }
-                }
-
-                if (casillasResaltadas.contains(new Point(f, c)) && blinkState) {
-                    lbl.setBackground(Color.YELLOW);
-                }
-            }
-        }
-
-        revalidate();
-        repaint();
-    }
 
     public void setCasillasResaltadas(List<Point> pts) {
         casillasResaltadas = (pts != null) ? pts : new ArrayList<>();
@@ -178,6 +151,52 @@ public class CartonGUI extends javax.swing.JPanel {
         t.start();
     }
     
+    
+    public void mostrarCarton(Carton carton) {
+    this.cartonActual = carton;
+    LabelID.setText("ID: " + carton.getId());
+
+    Casillas[][] cs = carton.getEspacios();
+
+    for (int f = 0; f < 5; f++) {
+        for (int c = 0; c < 5; c++) {
+
+            JLabel lbl = labels[f][c];
+            Casillas cas = cs[f][c];
+
+            lbl.setOpaque(true);     
+            lbl.setText("");        
+
+            if (cas.isDisponible()) {
+                
+                lbl.setBackground(new Color(0, 120, 255));
+                lbl.setText("FREE");
+
+            } else {
+                lbl.setText(String.valueOf(cas.getValores()));
+
+                if (cas.isMarcados()) {
+
+                    lbl.setBackground(new Color(0, 170, 0)); 
+
+                } else {
+
+                    lbl.setBackground(new Color(45, 45, 45));
+                }
+            }
+
+
+            if (casillasResaltadas.contains(new Point(f, c)) && blinkState) {
+                lbl.setBackground(Color.YELLOW);
+            }
+
+            lbl.repaint();  
+        }
+    }
+
+    revalidate();
+    repaint();
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -463,11 +482,12 @@ public class CartonGUI extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(LabelID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LabelID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -475,8 +495,9 @@ public class CartonGUI extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LabelID, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelID, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
